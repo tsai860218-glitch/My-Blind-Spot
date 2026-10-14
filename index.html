@@ -1,600 +1,353 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
+<!doctype html>
+<html lang="zh-Hant-TW">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-sNwh2exe68dxcLKN/UTbOHMT8FvL0zB3/VL+Uf42hcw=' https://www.gstatic.com https://apis.google.com https://www.google.com; style-src 'unsafe-inline'; img-src 'self' data:; connect-src https://*.googleapis.com https://my-blind-spot.firebaseapp.com; frame-src https://my-blind-spot.firebaseapp.com https://www.google.com; base-uri 'none'; form-action 'none'; object-src 'none'">
-<meta name="referrer" content="no-referrer">
-<meta name="robots" content="noindex,nofollow">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f7f6f2"><title>看不見的自己｜繁星商學院</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="以 40 題日常情境檢測十大劣根性，產出盲點雷達圖、面向排序與改善行動。">
+<title>成功習慣盲點檢測</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;800&family=Noto+Sans+TC:wght@400;500;700&display=swap">
 <style>
-:root{--bg:#f7f6f2;--paper:#fff;--ink:#22251f;--muted:#777a72;--line:#e6e4dc;--green:#2f5144;--green2:#e8f0e9;--gold:#c7a66a;--shadow:0 18px 50px rgba(30,38,31,.08)}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;line-height:1.7}button,input,textarea{font:inherit}button{cursor:pointer}.shell{max-width:1000px;margin:0 auto;padding:24px 18px 60px}.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:26px}.brand{display:flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.08em;font-weight:700}.mark{width:36px;height:36px;border-radius:12px;background:var(--green);color:#fff;display:grid;place-items:center;font:20px Georgia}.small,.muted{font-size:12px;color:var(--muted)}.hero{padding:clamp(26px,6vw,58px);background:linear-gradient(135deg,#e8eee8,#f3f0e8 68%,#f5e9df);border-radius:28px;position:relative;overflow:hidden}.eyebrow,.label{font-size:11px;letter-spacing:.16em;color:var(--green);font-weight:800}.hero h1{font-size:clamp(36px,7vw,62px);line-height:1.12;letter-spacing:-.045em;margin:16px 0}.hero p{max-width:690px;color:#53584f}.hero-art{position:absolute;right:-24px;bottom:-48px;width:210px;height:210px;border:1px solid #2f514426;border-radius:50%;display:grid;place-items:center;color:#2f51442e;font:italic 110px Georgia;pointer-events:none}.hero-art:before,.hero-art:after{content:"";position:absolute;border:1px solid #2f514426;border-radius:50%;inset:20px}.hero-art:after{inset:43px}.btn{border:0;border-radius:13px;padding:11px 16px;background:var(--green);color:white;font-weight:700}.btn.secondary{background:#fff;color:var(--green);border:1px solid var(--line)}.btn.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}.btn:disabled{opacity:.4;cursor:not-allowed}.panel,.card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:clamp(20px,4vw,32px);box-shadow:var(--shadow);margin-top:16px}.hidden{display:none!important}.notice{border-left:4px solid var(--gold);background:#fbf7ed;padding:14px 16px;border-radius:10px;font-size:13px;color:#5f584b}.field{display:grid;gap:6px;margin:12px 0}.field label{font-weight:700;font-size:13px}.field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff;color:var(--ink)}.row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.progress-head{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13px;color:var(--muted)}.progress{height:5px;background:#eeede7;border-radius:9px;overflow:hidden;margin:12px 0 26px}.progress span{display:block;height:100%;background:var(--green);transition:width .25s}.tag{display:inline-flex;padding:5px 10px;border-radius:99px;background:var(--green2);color:var(--green);font-size:11px;font-weight:800}.question{font-size:clamp(22px,4vw,31px);line-height:1.45;letter-spacing:-.025em;margin:13px 0 9px}.sub{color:var(--muted);font-size:14px;margin:0 0 22px}.choices{display:grid;gap:10px}.choice{display:flex;align-items:flex-start;gap:13px;text-align:left;padding:15px;border:1px solid var(--line);border-radius:15px;background:#fff;color:var(--ink);width:100%;transition:.16s}.choice:hover{border-color:#9ab2a3;background:#fbfcfa}.choice.selected{border-color:var(--green);background:var(--green2);box-shadow:inset 0 0 0 1px var(--green)}.letter{width:30px;height:30px;flex:0 0 30px;display:grid;place-items:center;border:1px solid var(--line);border-radius:10px;color:var(--green);font-size:12px;font-weight:800;background:#fff}.choice.selected .letter{background:var(--green);color:white}.choice-copy{font-size:15px}.footer-actions{display:flex;justify-content:space-between;gap:10px;margin-top:24px}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}.feature{background:#fff;border:1px solid var(--line);border-radius:18px;padding:17px}.feature strong{display:block;margin:5px 0}.feature small{color:var(--muted);font-size:12px}.report-head{background:linear-gradient(135deg,#e8eee8,#f2eee4);padding:25px;border-radius:18px}.report-head h2{font-size:clamp(27px,5vw,40px);line-height:1.2;margin:10px 0}.report-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.report-card{border:1px solid var(--line);border-radius:17px;padding:18px}.report-card h3{margin:0 0 8px;font-size:16px}.report-card p,.report-card li{font-size:14px;color:#5c6058}.report-card ul{padding-left:18px}.actionbox{background:var(--green2);padding:18px;border-radius:16px;margin-top:14px}.actionbox textarea{width:100%;min-height:90px;border:1px solid #cbd8cc;background:#fff;border-radius:12px;padding:12px;resize:vertical}.footnote{font-size:12px;color:var(--muted);margin-top:18px}.status{min-height:22px;color:#9a4d2f;font-size:13px;margin-top:8px}.tablewrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--muted);font-weight:700}td button{margin:2px}.pill{font-size:11px;border-radius:99px;padding:3px 8px;background:var(--green2);color:var(--green)}.admin-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.answerlist{display:grid;gap:12px}.answeritem{padding:13px;border:1px solid var(--line);border-radius:12px}.answeritem strong{display:block}.answeritem p{margin:5px 0;font-size:13px;color:#575b53}.toast{color:var(--green);font-size:13px;min-height:22px;margin-top:8px}
-@media(max-width:640px){.features,.report-grid{grid-template-columns:1fr}.hero-art{opacity:.35;width:130px;height:130px;font-size:70px;right:-25px;bottom:-35px}.topnote{display:none}.footer-actions .btn{padding:11px 12px}.choice{padding:13px}.panel,.card{padding:18px}}
-@media print{body{background:#fff}.topbar,.report-actions,.actionbox textarea,.btn,.footnote{display:none!important}.shell{max-width:none;padding:0}.panel{box-shadow:none;border:0}.report-card,.report-head,.actionbox{break-inside:avoid}}
-:focus-visible{outline:2px solid var(--green);outline-offset:2px}
-.consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;margin:14px 0}
-.consent input{width:auto;margin-top:5px;flex:0 0 auto}
-.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
-.pairbox{background:#fbfcfa;border:1px solid var(--line);border-radius:12px;padding:12px}
-.pairbox p{margin:4px 0}
-.kv{margin:8px 0;font-size:14px;color:#5c6058}
-@media(max-width:640px){.pair{grid-template-columns:1fr}}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0}
+[hidden]{display:none!important}
 
+/* Layout: single centered column (max 720px); one question per card, results stacked: radar → ranking → top-3 detail */
+:root{
+  --bg:#EEF2F3; --surface:#FFFFFF; --ink:#18232E; --muted:#5B6874; --line:#D5DDE1;
+  --accent:#2C6E6F; --accent-soft:#DCEBEA; --warn:#B9792A; --warn-soft:#F5E8D4; --hot:#B4533D;
+  --f-display:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#10171C; --surface:#18222A; --ink:#E4EBEE; --muted:#97A5AE; --line:#2C3A44;
+  --accent:#62B3B1; --accent-soft:#1F3536; --warn:#E0A75A; --warn-soft:#3A2E1D; --hot:#E08A72; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10171C; --surface:#18222A; --ink:#E4EBEE; --muted:#97A5AE; --line:#2C3A44;
+  --accent:#62B3B1; --accent-soft:#1F3536; --warn:#E0A75A; --warn-soft:#3A2E1D; --hot:#E08A72; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.7}
+.wrap{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px;display:flex;flex-direction:column;gap:20px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.35}
+h1{font-size:clamp(1.7rem,5vw,2.3rem);font-weight:800}
+h2{font-size:1.35rem}
+h3{font-size:1.12rem}
+p{margin:0}
+.eyebrow{font-size:.78rem;letter-spacing:.12em;color:var(--accent);font-weight:700}
+.muted{color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.btn{font:inherit;font-weight:700;border-radius:10px;padding:11px 20px;border:1px solid var(--accent);background:var(--accent);color:var(--surface);cursor:pointer}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn:disabled{opacity:.4;cursor:default}
+.btn:focus-visible,.opt:focus-visible,.lk button:focus-visible{outline:3px solid var(--warn);outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.notes{display:grid;gap:8px;padding-left:1.2em;margin:0}
+.progress{height:6px;background:var(--line);border-radius:6px;overflow:hidden}
+.progress i{display:block;height:100%;background:var(--accent);transition:width .3s}
+.qmeta{display:flex;justify-content:space-between;font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.tag{display:inline-block;font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--accent-soft);color:var(--accent);font-weight:700}
+.qtext{font-size:1.12rem;font-weight:500}
+.opts{display:grid;gap:10px}
+.opt{font:inherit;text-align:left;padding:13px 16px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;line-height:1.55}
+.opt:hover{border-color:var(--accent)}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft);font-weight:500}
+.lk{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.lk button{font:inherit;padding:12px 2px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;font-size:.82rem;line-height:1.3}
+.lk button b{display:block;font-size:1.1rem;font-variant-numeric:tabular-nums}
+.lk button.sel{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+.radar{width:100%;max-width:440px;margin:0 auto;display:block}
+.radar text{fill:var(--muted);font-size:13px;font-family:var(--f-body)}
+.radar .ring{fill:none;stroke:var(--line)}
+.radar .axis{stroke:var(--line)}
+.radar .area{fill:var(--warn);fill-opacity:.22;stroke:var(--warn);stroke-width:2}
+.radar .dot{fill:var(--warn)}
+.radar .top{fill:var(--hot);font-weight:700}
+.radar .rl{font-size:10px;fill:var(--muted)}
+.rank{display:grid;gap:9px}
+.rk{display:grid;grid-template-columns:1.6em 6.2em 1fr 3em;gap:10px;align-items:center;font-variant-numeric:tabular-nums}
+.rk .n{color:var(--muted);font-size:.85rem}
+.rk .bar{height:10px;background:var(--line);border-radius:6px;overflow:hidden}
+.rk .bar i{display:block;height:100%;border-radius:6px}
+.rk .v{text-align:right;font-weight:700}
+.lv{font-size:.75rem;padding:1px 8px;border-radius:99px;font-weight:700;white-space:nowrap}
+.lv-0{background:var(--accent-soft);color:var(--accent)}
+.lv-1{background:var(--accent-soft);color:var(--muted)}
+.lv-2{background:var(--warn-soft);color:var(--warn)}
+.lv-3{background:var(--warn-soft);color:var(--hot)}
+.focus{border-left:4px solid var(--warn)}
+.focus .head{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
+.focus .score{font-family:var(--f-display);font-size:1.6rem;color:var(--warn);font-variant-numeric:tabular-nums}
+.sub{font-size:.8rem;letter-spacing:.08em;color:var(--muted);font-weight:700}
+.focus ul,.focus ol{margin:0;padding-left:1.3em;display:grid;gap:6px}
+.reframe{background:var(--accent-soft);border-radius:10px;padding:12px 14px;font-size:.95rem}
+.legend{font-size:.82rem;color:var(--muted);display:flex;gap:12px;flex-wrap:wrap}
+.cons{font-size:.92rem;padding:12px 14px;border-radius:10px;background:var(--bg);border:1px dashed var(--line)}
+.strength{display:grid;gap:8px}
+@media (max-width:480px){.rk{grid-template-columns:1.3em 5.4em 1fr 2.6em;gap:7px}.card{padding:18px}.lk button{font-size:.72rem}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
+
 </head>
-<body><div class="shell">
-<header class="topbar"><div class="brand"><div class="mark">S</div><div>繁星商學院<br><span class="small">STELLAR BUSINESS ACADEMY</span></div></div><div class="small">PERSONAL GROWTH · 自我探索</div></header>
+<body>
+<div class="wrap" id="app"></div>
 
-<section id="loginView" class="panel">
-<div class="eyebrow">PRIVATE REFLECTION SPACE</div><h1 style="font-size:32px;line-height:1.25">看不見的自己。</h1>
-<div class="notice"><strong>作答與資料使用說明</strong><br>本測驗用於個人自我反思與成長。你的作答、測驗結果及歷次紀錄會儲存在雲端資料庫，供你日後查看；繁星商學院指定的系統管理者也能查看受試者的作答與結果，以進行測驗管理與整體規劃。其他受試者不能查看你的個人資料。本工具不是心理診斷或標準化心理測驗。請勿填入不必要的敏感個人資訊。如需查詢、更正或刪除你的資料，請聯絡管理者。請使用只有你自己知道的密碼，並避免與其他網站共用。</div>
-<div class="admin-tabs" style="margin:14px 0 4px"><button type="button" class="btn" id="modeLoginBtn" data-act="mode" data-arg="login">登入</button><button type="button" class="btn secondary" id="modeRegBtn" data-act="mode" data-arg="register">註冊新帳號</button></div>
-<div class="field hidden" id="nameField"><label for="displayName">你的稱呼（管理者看得到）</label><input id="displayName" type="text" maxlength="40" autocomplete="nickname" placeholder="例如：小明"></div>
-<div class="field"><label for="email">電子信箱（作為帳號）</label><input id="email" type="email" maxlength="120" autocomplete="username" spellcheck="false" placeholder="name@example.com"></div>
-<div class="field"><label for="password">密碼</label><input id="password" type="password" maxlength="128" autocomplete="current-password" placeholder="至少 8 個字元"></div>
-<label class="consent hidden" id="consentRow"><input type="checkbox" id="consent"><span>我已閱讀並同意上述資料使用說明。</span></label>
-<div class="row"><button type="button" class="btn" id="loginBtn" data-act="submit">登入</button><button type="button" class="btn ghost" data-act="resetPw">忘記密碼</button></div><div id="loginStatus" class="status" role="status"></div>
-</section>
-
-<section id="homeView" class="hidden">
-<div class="hero"><div class="eyebrow">A JOURNEY INWARD · 成長探索</div><h1>看見模式，<br>為下一次保留選擇。</h1><p>透過日常情境，觀察自己面對分歧、挫折、合作與承諾時的慣常反應。目的不是替自己貼標籤，而是更清楚理解哪些模式正在幫助你，哪些模式值得調整。</p><p><strong>請選擇你在現實中最可能出現的反應，而不是你認為最理想的答案。</strong></p><button type="button" class="btn" data-act="startQuiz">開始新的測驗 ↗</button><div class="hero-art">S</div></div>
-<div class="features"><div class="feature"><div class="eyebrow">01 · 情境</div><strong>貼近日常的選擇</strong><small>沒有單一正確答案，重點是誠實觀察。</small></div><div class="feature"><div class="eyebrow">02 · 追問</div><strong>探索反應背後的脈絡</strong><small>追問依第一層選擇調整。</small></div><div class="feature"><div class="eyebrow">03 · 報告</div><strong>形成可實踐的行動</strong><small>完成全部 20 步後才會呈現報告。</small></div></div>
-<div class="panel"><div class="row"><div><h2 style="margin:0">我的歷次測驗</h2><p class="muted">只有你與系統管理者能查看你的紀錄。</p></div><button type="button" class="btn secondary" data-act="refreshHistory">重新整理</button></div><div id="historyList" class="tablewrap"></div></div>
-<div class="row" style="margin-top:14px"><span id="welcomeName" class="muted"></span><button type="button" class="btn ghost" data-act="logout">登出</button></div>
-</section>
-
-<section id="quizView" class="panel hidden"><div class="progress-head"><span id="stageLabel">情境探索</span><span id="progressText">第 1 / 20 題｜剩餘 19 題（含深入追問）</span></div><div class="progress"><span id="progressBar"></span></div><div id="quizContent"></div><div class="footer-actions"><button type="button" class="btn ghost" id="backBtn" data-act="goBack">← 上一步</button><button type="button" class="btn" id="nextBtn" data-act="nextStep" disabled>確認選擇 →</button></div><div id="saveStatus" class="status" role="status"></div></section>
-
-<section id="reportView" class="panel hidden"><div class="label">YOUR REFLECTION REPORT</div><div id="reportContent"></div><div class="row report-actions" style="margin-top:18px"><button type="button" class="btn" id="saveBtn" data-act="save">儲存本次報告</button><button type="button" class="btn secondary" data-act="print">列印／另存 PDF</button><button type="button" class="btn ghost" data-act="home">返回我的首頁</button></div><div id="reportStatus" class="status" role="status"></div></section>
-
-<section id="adminView" class="panel hidden"><div class="row"><div><div class="eyebrow">ADMIN ONLY</div><h1 style="margin:4px 0">管理者後台</h1><p class="muted">個人作答與報告僅限授權管理者查看；請使用高強度且不重複的管理者密碼。</p></div><button type="button" class="btn ghost" data-act="logout">登出</button></div>
-<div class="admin-tabs"><button type="button" class="btn" data-act="adminTab" data-arg="participants">受試者管理</button><button type="button" class="btn secondary" data-act="adminTab" data-arg="attempts">所有測驗紀錄</button><button type="button" class="btn secondary" data-act="refreshAdmin">重新整理</button></div>
-<div id="adminCreate" class="card"><h3>帳號管理</h3><p class="muted">受試者在登入頁自行註冊。你可以在「受試者管理」停用帳號，或在紀錄詳情中刪除單筆紀錄。管理者帳號請在 Firebase Console 建立（見設定步驟）。</p></div>
-<div id="adminContent" class="tablewrap"></div><div id="adminDetail" class="card hidden"></div></section>
-<p class="footnote">繁星商學院｜《看不見的自己》自我反思工具。未經心理計量驗證，不應用於診斷、招聘、績效評定或判定他人品格。資料存取由 Firebase Authentication、Cloud Functions 與 Firestore Rules 控管。</p></div>
-
-<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
 <script>
-"use strict";
-(function () {
-/* 防止被嵌入他人網頁（點擊劫持）。meta CSP 無法設定 frame-ancestors，故在此補強。 */
-if (window.top !== window.self) {
-  document.documentElement.style.display = "none";
-  try { window.top.location = window.self.location.href; } catch (e) {}
-  return;
-}
-
-/* 部署前請到 Firebase Console > 專案設定 > 一般，填入你的 Web App config。
-   並到 Google Cloud Console > API 與服務 > 憑證，為此 API key 設定「HTTP 參照網址」限制。 */
-const firebaseConfig = {
-  apiKey: "AIzaSyDWd4c_A-iQ330vWDadM35A1ORVKfydWrM",
-  authDomain: "my-blind-spot.firebaseapp.com",
-  projectId: "my-blind-spot",
-  appId: "1:275503026869:web:3933aa99e6b7e1ee68e4fc"
+const DIMS={
+A:{name:'確信偏好',orig:'自以為是',desc:'習慣以自己的判斷為準，別人的方法要先通過你的評估才會被採用。',
+ beh:['收到建議時，只挑「我覺得有道理」的部分，其餘略過','方法成效普通時，先認為是「做得還不夠多」，較少懷疑方法本身','覺得多餘的流程步驟，會私下省略'],
+ act:['下次收到建議，先完整照做兩週，期間不加入自己的修改，再比較結果','每月挑一個你最有把握的做法，請一位成果比你好的人挑毛病','同時記錄「我的方法」和「建議的方法」的成效，讓數據替你判斷'],
+ rf:'有主見是你的資產。結果還沒達到想要的樣子時，把判斷力用在「驗證別人的方法」上，成長會更快。',str:'願意先照做再判斷'},
+B:{name:'保留質疑',orig:'不以為然',desc:'面對別人的成果或建議，第一反應容易是找出它不適用自己的理由。',
+ beh:['聽到夥伴的好成績，先想到「他條件比較好」或「運氣不錯」','簡單的建議會被歸類成「太基本」','聽案例分享時，心裡在找例外而不是找可借用的步驟'],
+ act:['每次聽到別人的成果，先問一句「你是怎麼做到的？」','把「那不適用我」改寫成「其中哪一步我可以借用？」','挑一個你曾覺得太基本的建議，連續做 7 天'],
+ rf:'能質疑代表你不盲從。先找出可借用的那一步，再討論不適用的部分，兩者就能兼得。',str:'能從別人的成果中找到可學之處'},
+C:{name:'已知感',orig:'老氣橫秋',desc:'對聽過的觀念容易產生「我知道了」的感覺，讓「知道」悄悄取代了「做到」。',
+ beh:['聽到熟悉的內容會分心，覺得是重複','被問「試過嗎？」時，回答「知道」而不是說明有沒有做過','讀書或上課只記新鮮的觀點，熟悉的部分直接跳過'],
+ act:['把「我知道」換成「我做到幾成」：上課時在筆記旁替自己打 0–10 分','回答問題時區分三種程度：聽過／試過／持續在做','每次複習舊內容，找出一個這次才注意到的細節'],
+ rf:'你吸收得快、聽過的東西多，這是基礎。把每個「知道」再往前推一步到「做到」，差距就在這裡被補上。',str:'把知道的事真正做出來'},
+D:{name:'資歷依附',orig:'倚老賣老',desc:'傾向用年資和經歷來證明自己，對新方法、新工具或資淺者的做法比較保留。',
+ beh:['說服別人時，先提到自己做了多久、經歷多少','新人提出不同做法時，第一句是提醒風險','面對新工具或新玩法，習慣「先觀察一陣子」'],
+ act:['改用「最近三個月的實際成果」作為說服別人的依據','每月向一位比你資淺、但某方面做得好的人請教一件事','挑一個新工具，給自己兩週學到能實際用在工作上'],
+ rf:'經驗讓你少走很多冤枉路。當經驗加上新方法，它的價值才會繼續增加，而不是停在過去。',str:'對新方法與新人保持開放'},
+E:{name:'關注範圍',orig:'漠不關心',desc:'注意力容易被與目標無關的資訊佔據，和成長相關的話題參與度偏低。你關心什麼，會決定你的未來。',
+ beh:['聚會聊天多落在日常、八卦或追劇','群組裡的心得分享「已讀，之後再看」，之後通常沒再看','空檔時間習慣滑短影音放鬆'],
+ act:['每次聚會主動問一個問題：「你最近在嘗試什麼？」','群組心得看完後，至少留下一個問題或一個行動','每天固定 15 分鐘，看一段跟目標有關的內容'],
+ rf:'你懂得放鬆，這很重要。只要把其中一小段時間換給目標，累積下來的差距會很明顯。',str:'把注意力放在跟目標有關的事上'},
+F:{name:'單飛傾向',orig:'格格不入',desc:'偏好自己處理，較少主動融入團隊的節奏或尋求協助。團隊合作的成果通常大於單打獨鬥。',
+ beh:['卡關時先自己研究，不太想麻煩別人','團隊分工時等被分配，或乾脆自己做完比較快','進入新環境時，習慣保持觀望的距離'],
+ act:['給自己一條規則：卡關超過 30 分鐘就問一個人','團隊活動主動認領一個小任務，並回報一次進度','每週和一位夥伴做 15 分鐘的進度交流'],
+ rf:'獨立作業能力強是優點。把它和團隊接上線，你的能力會被放大，而不是只靠自己撐。',str:'能融入團隊並主動求助'},
+G:{name:'外在歸因',orig:'怨天尤人',desc:'事情不順時，較快看到環境、別人或制度的因素，自己能掌控的部分容易被忽略。',
+ beh:['檢討時先列出外部原因：假日多、景氣差、支援不夠','客戶取消時，先判斷是對方沒誠意','看到身邊的人遇到困境，傾向歸給大環境'],
+ act:['每次檢討先寫「我能控制的一件事」，再寫外部因素','把抱怨的句子改寫成「下次我會……」','寫一份自己的危機清單：如果現在的收入停了，第二條路是什麼'],
+ rf:'你看得到環境的問題，代表觀察力敏銳。把同樣的觀察力轉向自己能動的那一塊，就會變成行動力。',str:'先從自己能控制的部分找原因'},
+H:{name:'低能量對話',orig:'自怨自艾',desc:'遇到挫折時，內心的自我對話容易轉向「我不行」或「大概就這樣了」，從認命轉向知命需要刻意練習。',
+ beh:['連續被拒絕後，開始懷疑自己適不適合','被問近況時，常回「還好」「最近不太順」','想到幾年後的自己，不太敢描繪具體畫面'],
+ act:['被拒絕後只做一件事：把原因分類記下來，不評價自己','每天睡前寫下一件今天有進展的小事','把三年後的一天寫成具體畫面：在哪裡、做什麼、跟誰，放在看得到的地方'],
+ rf:'會感到失落，代表你在乎。知道自己的處境、願意改變它，就是「知命」的起點。',str:'挫折後能很快回到行動'},
+I:{name:'方向漂移',orig:'善變',desc:'目標或方法容易因為新機會、或短期看不到成果而變動，初心容易被沖淡。',
+ beh:['今年的目標中途換過一兩次','看到別的項目賺得快，會想撥時間兼著試','一件事做了兩個月沒成果，就開始懷疑方向'],
+ act:['寫下「當初為什麼開始」的三個理由，每次想換方向前先重讀','設定 90 天的「不換方向期」，期間只調整方法、不換目標','新機會先放進觀察清單，30 天後還想做再評估'],
+ rf:'你對機會敏感、願意嘗試。給方向一段足夠長的時間，才看得出它真正的成果。',str:'方向清楚，能堅持到看見成果'},
+J:{name:'動機衰減',orig:'健忘',desc:'上課或受到啟發時動力很強，回到日常後很快淡掉，容易忘記自己為什麼要成功。',
+ beh:['上完一堂有感覺的課，幾天後就恢復原樣','初衷說得出來，但平常很少想起','只有在開會、上課或被問到時，才會想到目標'],
+ act:['上完課當晚，寫下一個「明天就做」的具體行動','把初衷做成手機桌布或鎖定畫面','每天固定一個時間花 1 分鐘看一下目標進度'],
+ rf:'你容易被啟發，代表心裡有想要的東西。只要替熱情加上提醒機制，它就能撐過日常。',str:'把熱情帶回日常並持續'}
 };
-const QUESTION_SET_VERSION = 2;          /* 目前使用的題庫版本；改題時新增版本並遞增，舊紀錄才不會被錯誤還原 */
-const IDLE_MINUTES = { participant: 30, admin: 15 };
+const K=Object.keys(DIMS);
 
-const BANK_V1 = [{"title": "當你的付出沒有被提及", "scene": "你花了不少時間完成一項團隊任務。成果大致順利，但公開回顧時，大家談到別人的貢獻，沒有提到你。", "opts": [["先把事情做好，是否被提到不是最重要的。", "成就感主要來自任務本身", "自我價值與外界肯定的關係", "fairness"], ["整理自己負責的工作，找合適時機補充成果。", "傾向用具體資訊讓貢獻被理解", "主動表達與爭取之間的平衡", "agency"], ["先不多說，觀察之後合作時是否也有類似情況。", "傾向蒐集更多訊息再判斷", "觀察是否有事實支持疑慮，避免長期猜測", "uncertainty"], ["心裡會有些失落，接下來可能降低投入。", "會受到回饋落差影響投入意願", "如何表達需求，而非用退縮回應失望", "recovery"]], "follow": ["如果之後對方補充肯定了你的貢獻，你通常會怎麼看待這件事？", "如果你整理成果後，對方仍沒有回應，你接下來比較可能怎麼做？", "觀察一段時間後，如果沒有發現明顯不公平，你會怎麼處理先前的疑慮？", "當失落感持續影響你的投入時，你比較可能採取哪種做法？"], "followOpts": [["能接受新的資訊，回到合作與任務本身。", "flex"], ["會清楚說明自己在意的回饋或合作方式。", "agency"], ["仍會反覆回想，難以確定對方的真正想法。", "uncertainty"], ["先調整自己的期待與投入，再觀察實際結果。", "recovery"]]}, {"title": "當別人質疑你的方案", "scene": "你準備了一份企劃，討論時有人指出一個你沒有考慮到的風險，並提出不同做法。", "opts": [["先說明當初這樣規劃的理由，再聽對方補充。", "希望自己的判斷脈絡被完整理解", "解釋之後，是否仍能讓證據改變決定", "openness"], ["請對方說明替代方案的條件，再一起比較。", "傾向透過資訊與比較做決策", "避免只收集支持自己立場的資訊", "openness"], ["先記下意見，按原方案執行一小段再評估。", "重視穩定與實際結果", "是否設有明確的檢查點，而非無限延後調整", "consistency"], ["立刻重新檢查整份企劃，擔心自己漏掉更多問題。", "對錯誤保持警覺", "如何把自我修正與過度否定自己區分開", "recovery"]], "follow": ["如果後來的資料顯示對方提出的風險確實存在，你會怎麼做？", "當兩種方案都有優點、沒有明顯標準答案時，你會如何決定？", "你決定先試行原方案時，會用什麼條件判斷是否需要調整？", "如果確認只是企劃中一個局部需要修改，你通常會怎麼看待自己？"], "followOpts": [["依照新資訊調整方案，並向相關人員說明原因。", "openness"], ["設定可檢驗的標準，讓結果協助決定。", "consistency"], ["容易把這次意見延伸成對自己能力的懷疑。", "recovery"], ["先和提出意見的人確認彼此理解是否一致。", "collaboration"]]}, {"title": "當資歷較淺的人提出新做法", "scene": "一位加入時間比你短的夥伴，提出一個你以前試過但沒有成功的方法。他很有熱情，也希望團隊一起嘗試。", "opts": [["分享過去遇到的問題，提醒他先評估風險。", "重視經驗累積與風險預防", "過去的條件是否與現在相同", "openness"], ["先了解他這次的做法與條件，再一起評估。", "願意比較新舊資訊", "是否真的保留讓新方法被驗證的空間", "openness"], ["讓他先試試看，等有結果再討論。", "重視實作與結果", "是否有必要先確認成本、風險和支援條件", "accountability"], ["認為自己對這類事情已經熟悉，不想花太多時間討論。", "傾向快速處理熟悉議題", "熟悉感是否讓自己忽略新資訊或他人觀點", "openness"]], "follow": ["如果他指出現在的資源或做法和你當年不同，你會怎麼回應？", "如果新方法仍有風險，但也可能帶來改善，你會怎麼決定？", "在讓他嘗試之前，你會先確認哪些事情？", "如果討論後發現新做法有值得參考之處，你會怎麼處理？"], "followOpts": [["重新比較條件，必要時更新原本的看法。", "openness"], ["先小規模測試，約定風險界線與檢核時間。", "accountability"], ["因為不想延伸討論，傾向維持原本做法。", "consistency"], ["願意承認自己還需要了解，並向對方提問。", "collaboration"]]}, {"title": "當計畫突然出現問題", "scene": "你負責的活動臨時出現場地、人力或流程問題，原訂計畫受到影響，其他人也在等你決定下一步。", "opts": [["先處理最急迫的問題，結束後再檢討原因。", "傾向先行動、後分析", "事後是否真的回顧並修正流程", "accountability"], ["確認現況與責任分工，快速重新安排。", "重視資訊、分工與協調", "避免在資訊不完整時急著找出誰該負責", "collaboration"], ["先弄清楚是誰或哪個環節沒有照約定完成。", "重視承諾與流程責任", "找原因是否有助解決，還是先急著歸責", "accountability"], ["覺得事情已經失控，容易煩躁或不想再管。", "壓力可能迅速影響行動意願", "如何把情緒調節與問題處理分開", "recovery"]], "follow": ["事情結束後，如果同類問題再次發生，你通常會怎麼做？", "如果你發現自己原本的安排也有疏漏，你會如何處理？", "如果問題其實是多個環節共同造成的，你會怎麼看待責任？", "當你感到煩躁、想退出處理時，什麼最可能幫助你重新行動？"], "followOpts": [["記錄原因，調整流程或預先準備備案。", "accountability"], ["和相關人員一起釐清可改善的部分。", "collaboration"], ["容易先聚焦在某個人的失誤，較難轉向系統改善。", "accountability"], ["先讓自己穩定下來，再拆成可以處理的小步驟。", "recovery"]]}, {"title": "當團隊習慣和你的不同", "scene": "你加入一個新的合作小組，大家的溝通方式、工作節奏和決策習慣，與你過去熟悉的環境不太一樣。", "opts": [["先觀察一段時間，了解大家為什麼這樣做。", "傾向先理解環境再調整", "觀察是否有助理解，還是讓自己一直停留在旁觀", "collaboration"], ["提出自己熟悉的方法，討論能否改善效率。", "願意主動分享既有經驗", "提出建議時是否也理解他人的限制", "collaboration"], ["先照現有方式配合，避免一開始就造成摩擦。", "重視關係與適應", "是否因避免衝突而沒有說出重要疑慮", "agency"], ["覺得這裡的做法不太適合自己，逐漸減少參與。", "對不熟悉的環境可能降低投入", "區分真正不適合與尚未找到參與方式", "recovery"]], "follow": ["如果觀察後仍不完全理解大家的做法，你會怎麼辦？", "如果團隊沒有採用你的建議，你會怎麼反應？", "如果你發現配合現有方式會影響工作品質，你會怎麼處理？", "如果有一位夥伴主動邀請你參與，你會如何回應？"], "followOpts": [["直接詢問原因，並確認共同目標。", "collaboration"], ["提出具體事實與替代方案，再共同決定。", "agency"], ["為了維持和諧而先接受，即使心裡仍有疑慮。", "agency"], ["嘗試建立一個小的合作切入點，再評估適應情況。", "recovery"]]}, {"title": "當你不熟悉談話內容", "scene": "團隊聚會時，大家熱烈討論一個你不熟悉的主題。你一時跟不上話題，但其他人看起來聊得很投入。", "opts": [["先聽大家怎麼說，等自己理解多一些再加入。", "偏向先理解再表達", "是否能在不完全熟悉時仍提出問題", "collaboration"], ["直接問大家在討論什麼，請他們解釋一下。", "願意承認資訊不足並主動詢問", "提問時是否能保持開放，而非只等著反駁", "openness"], ["把注意力轉到手機或其他事情，等話題過去。", "可能透過抽離降低不自在", "這是短暫休息，還是經常退出互動", "collaboration"], ["試著分享相近的經驗，讓自己也能參與。", "傾向從熟悉經驗連結話題", "是否有留意當下主題與他人的分享", "collaboration"]], "follow": ["如果話題一直沒有轉到你熟悉的範圍，你會怎麼做？", "如果對方的解釋仍讓你聽不太懂，你會怎麼回應？", "如果你發現自己常在這類場合抽離，你會怎麼看待這件事？", "如果別人沒有接續你的分享，你通常會怎麼做？"], "followOpts": [["繼續聽並提出一個真誠的澄清問題。", "collaboration"], ["坦白說明自己不熟悉，請對方補充背景。", "openness"], ["覺得自己格格不入，於是更少參與。", "recovery"], ["留意別人的反應，調整分享方式或把話題交回去。", "collaboration"]]}, {"title": "當別人的成果比你突出", "scene": "一位投入時間比你少的夥伴，近期卻取得很好的成果，並受到大家肯定。你也一直很努力，但進展沒有那麼快。", "opts": [["想了解他做對了什麼，有沒有值得借鏡的地方。", "傾向把成果當作學習資訊", "是否能在真心欣賞對方的同時看見自己的需求", "openness"], ["先觀察他的成果能否持續，再決定要不要參考。", "重視長期證據與穩定性", "觀察是否公平，還是先降低對方成果的重要性", "openness"], ["提醒自己每個人的條件不同，繼續照自己的步調走。", "能保留自己的節奏", "是否用這個想法合理化不願調整的地方", "consistency"], ["會覺得自己的努力沒有被公平看見，心情受影響。", "對投入與回饋的落差敏感", "如何表達需求，而不是把比較轉成自我否定或怨懟", "recovery"]], "follow": ["如果你從他的做法中找到一個可以嘗試的方式，你會怎麼做？", "如果他的成果確實持續穩定，你會如何更新自己的看法？", "如果你發現自己的方法效果有限，你會怎麼調整？", "當你覺得不公平時，你會怎麼確認自己的判斷？"], "followOpts": [["挑一個做法小規模實驗，觀察是否適合自己。", "openness"], ["根據持續的結果與具體證據調整看法。", "openness"], ["訂出可檢視的目標與期限，定期評估方法。", "consistency"], ["先區分可觀察事實、個人感受與尚未確認的推測。", "recovery"]]}, {"title": "當努力一段時間仍看不到成果", "scene": "你持續投入一個目標幾週，花了時間也做了不少事，但結果沒有明顯進展，開始不確定是否值得繼續。", "opts": [["檢查方法與數據，找出哪個環節需要改變。", "傾向從方法與證據尋找突破", "避免只分析而遲遲不採取下一步", "accountability"], ["找有經驗的人討論，聽聽不同觀點。", "願意尋求外部回饋", "是否能評估建議是否適合自己的情境", "openness"], ["覺得可能是環境或時機不好，先等一等。", "會考慮外部條件的影響", "區分合理限制與把所有原因都放在外部", "accountability"], ["開始懷疑自己是不是沒有能力，想暫停。", "挫折可能影響自我評價與持續性", "把結果不理想與個人價值分開，找可控制的一步", "recovery"]], "follow": ["如果你發現原本的方法確實效果不佳，你會怎麼決定下一步？", "如果不同的人給了互相矛盾的建議，你會怎麼處理？", "如果外在條件短期內無法改變，你會怎麼做？", "當你開始懷疑自己時，什麼最可能幫助你回到可行動的狀態？"], "followOpts": [["設定一個小規模的新做法，並訂下檢視日期。", "consistency"], ["比較建議的證據、適用條件與可能成本。", "openness"], ["列出可控制與不可控制的因素，先處理前者。", "accountability"], ["找可信任的人討論，並把目標拆成更小的步驟。", "recovery"]]}, {"title": "當出現更吸引人的新機會", "scene": "你已經承諾參與一項計畫，也投入了一段時間。此時出現一個看起來更有吸引力的新機會，但兩者很難同時兼顧。", "opts": [["先完成原本承諾，再評估下一個機會。", "重視承諾與持續性", "是否能在合理情況下調整承諾，而不是僵化地堅持", "consistency"], ["比較兩個機會的目標、成本與長期價值，再做決定。", "傾向明確評估取捨", "是否會把評估轉成無止境比較而延遲決策", "agency"], ["先和相關人員討論，確認能否調整原計畫。", "重視溝通與共同安排", "是否願意接受協商後不完全符合自己期待的結果", "collaboration"], ["很容易被新機會吸引，想先轉向再說。", "對新鮮感與機會保持敏感", "是否充分考慮既有承諾與轉換成本", "consistency"]], "follow": ["如果原本計畫仍需要你，而新機會也確實有價值，你會怎麼安排？", "如果比較後仍無法確定哪個更好，你會如何做決定？", "如果相關人員不同意調整原計畫，你會怎麼處理？", "如果新機會的熱度過一段時間後下降，你會怎麼看待自己的選擇？"], "followOpts": [["明確說明可投入的時間與責任，重新協調範圍。", "collaboration"], ["設定決策期限與最重要的判準，避免無限比較。", "agency"], ["遵守已承諾事項，並清楚交代任何必要的變更。", "consistency"], ["回頭檢視自己當初的動機與實際成本，再決定是否修正。", "agency"]]}, {"title": "當重要的小事一再被忘記", "scene": "最近你有幾次忘記回覆訊息、漏掉約定細節，或沒有在預定時間完成小任務。這些事情開始影響到別人的安排。", "opts": [["認真提醒自己下次要記得，先靠意志力改善。", "傾向靠自我提醒處理", "是否需要外部工具或流程，而不只要求自己更努力", "consistency"], ["建立行事曆、清單或固定提醒，降低遺漏機率。", "願意用系統支援執行", "工具是否簡單到能長期維持", "consistency"], ["先處理最急的事，其他事情有空再補。", "傾向按當下急迫性排序", "是否低估小承諾對他人安排的影響", "accountability"], ["覺得最近事情太多，先不想這些細節。", "可能受到負荷影響而暫時抽離", "是否需要重新安排負荷、尋求協助或明確告知", "recovery"]], "follow": ["如果你又漏掉一次相似的約定，你會怎麼處理？", "如果提醒工具使用一週後就被你忽略，你會怎麼調整？", "如果有些小事不急，卻會影響別人，你會怎麼安排？", "如果發現自己確實超出負荷，你會怎麼處理已答應的事情？"], "followOpts": [["主動承認影響、補救並檢查失誤發生的環節。", "accountability"], ["簡化提醒方式，固定在同一個時間檢查待辦。", "consistency"], ["重新排序並提前告知可能延誤的事項。", "agency"], ["和相關人員協調期限或分工，不再默默承擔。", "collaboration"]]}];
-const BANK_V2 = [{"title": "當你的付出沒有被提及", "scene": "你花了不少時間完成一項團隊任務。成果大致順利，但公開回顧時，大家談到別人的貢獻，沒有提到你。", "opts": [["先把事情做好，是否被提到不是最重要的。", "成就感主要來自任務本身", "自我價值與外界肯定的關係", "fairness"], ["整理自己負責的工作，找合適時機補充成果。", "傾向用具體資訊讓貢獻被理解", "主動表達與爭取之間的平衡", "agency"], ["先不多說，觀察之後合作時是否也有類似情況。", "傾向蒐集更多訊息再判斷", "觀察是否有事實支持疑慮，避免長期猜測", "uncertainty"], ["心裡會有些失落，接下來可能降低投入。", "會受到回饋落差影響投入意願", "如何表達需求，而非用退縮回應失望", "recovery"]], "follow": ["如果之後對方補充肯定了你的貢獻，你通常會怎麼看待這件事？", "如果你整理成果後，對方仍沒有回應，你接下來比較可能怎麼做？", "觀察一段時間後，如果沒有發現明顯不公平，你會怎麼處理先前的疑慮？", "當失落感持續影響你的投入時，你比較可能採取哪種做法？"], "followOpts": [["很高興被看見，但也提醒自己，成就感主要來自任務本身。", "覺得被肯定讓之前的付出更有意義，也更願意持續投入。", "會懷疑對方是不是只是客套，不太確定該不該當真。", "會有點意外，也想知道之前為什麼沒有被提到。"], ["換個方式或場合再說明一次，確認對方是否真的理解。", "直接詢問對方希望看到哪些資訊，再調整呈現方式。", "先放下，把重心放回手上的工作，看之後是否有機會。", "開始覺得再說也沒用，之後比較不想主動分享成果。"], ["承認那次可能只是疏漏，把注意力放回合作。", "找機會輕鬆問一下，確認自己的理解是否正確。", "暫時放下，但心裡仍會留意類似情況是否再出現。", "仍然覺得有點不對勁，之後對這位夥伴多一分保留。"], ["找可信任的人聊聊，整理自己真正在意的是什麼。", "直接向相關的人說明自己期待的回饋方式。", "先維持基本的投入，等心情平復再決定要不要調整。", "告訴自己不要在意，繼續做事，不特別處理這份感受。"]]}, {"title": "當別人質疑你的方案", "scene": "你準備了一份企劃，討論時有人指出一個你沒有考慮到的風險，並提出不同做法。", "opts": [["先說明當初這樣規劃的理由，再聽對方補充。", "希望自己的判斷脈絡被完整理解", "解釋之後，是否仍能讓證據改變決定", "openness"], ["請對方說明替代方案的條件，再一起比較。", "傾向透過資訊與比較做決策", "避免只收集支持自己立場的資訊", "openness"], ["先記下意見，按原方案執行一小段再評估。", "重視穩定與實際結果", "是否設有明確的檢查點，而非無限延後調整", "consistency"], ["立刻重新檢查整份企劃，擔心自己漏掉更多問題。", "對錯誤保持警覺", "如何把自我修正與過度否定自己區分開", "recovery"]], "follow": ["如果後來的資料顯示對方提出的風險確實存在，你會怎麼做？", "當兩種方案都有優點、沒有明顯標準答案時，你會如何決定？", "你決定先試行原方案時，會用什麼條件判斷是否需要調整？", "如果確認只是企劃中一個局部需要修改，你通常會怎麼看待自己？"], "followOpts": [["調整方案，並向相關人員說明調整的原因。", "先確認風險的影響範圍，再決定要全面調整還是局部修改。", "覺得有些尷尬，傾向低調修改，不特別提起。", "仍會強調原規劃有其合理之處，只做最小幅度的調整。"], ["先訂出共同的判準，例如成本、風險、時程，再逐項比較。", "選一個先小規模試行，用結果決定是否調整。", "傾向採用多數人比較支持的方案，讓團隊先推進。", "容易拖延決定，想再多收集一些資訊。"], ["事先約定明確的檢查時間與指標，到時依結果決定。", "觀察對方提出的風險是否真的出現，出現就調整。", "憑執行過程中的感覺判斷，沒有特別訂標準。", "除非問題很明顯，否則傾向繼續原方案。"], ["這是正常的修正，改好那一部分就可以。", "鬆一口氣，但仍會多花時間確認其他部分沒問題。", "仍會覺得自己準備得不夠周全，有點挫折。", "會想著下次要準備得更完整，不想再被指出問題。"]]}, {"title": "當資歷較淺的人提出新做法", "scene": "一位加入時間比你短的夥伴，提出一個你以前試過但沒有成功的方法。他很有熱情，也希望團隊一起嘗試。", "opts": [["分享過去遇到的問題，提醒他先評估風險。", "重視經驗累積與風險預防", "過去的條件是否與現在相同", "openness"], ["先了解他這次的做法與條件，再一起評估。", "願意比較新舊資訊", "是否真的保留讓新方法被驗證的空間", "openness"], ["讓他先試試看，等有結果再討論。", "重視實作與結果", "是否有必要先確認成本、風險和支援條件", "accountability"], ["認為自己對這類事情已經熟悉，不想花太多時間討論。", "傾向快速處理熟悉議題", "熟悉感是否讓自己忽略新資訊或他人觀點", "openness"]], "follow": ["如果他指出現在的資源或做法和你當年不同，你會怎麼回應？", "如果新方法仍有風險，但也可能帶來改善，你會怎麼決定？", "在讓他嘗試之前，你會先確認哪些事情？", "如果討論後發現新做法有值得參考之處，你會怎麼處理？"], "followOpts": [["請他說明差異，重新比較後修正自己的看法。", "承認條件可能不同，但仍建議先小範圍測試。", "嘴上說好，心裡仍認為結果可能會一樣。", "覺得他沒有完全聽進經驗，傾向不再多說。"], ["約定風險界線與檢核時間，讓他先試行。", "請他補充備案或支援條件，確認後再決定。", "傾向支持嘗試，之後再看情況處理。", "傾向維持現況，避免多承擔風險。"], ["成本、時間與可能的風險，並約好何時檢視。", "他是否需要資源或支援，以及誰可以協助。", "把過去失敗的經驗簡短告訴他，其餘讓他自己判斷。", "沒有特別確認，相信他會自己處理。"], ["直接承認這部分有價值，並調整自己的做法。", "先自己想一想，再決定是否採用。", "會覺得有點不自在，傾向淡化這一點。", "仍以原本的方式為主，只吸收一小部分。"]]}, {"title": "當計畫突然出現問題", "scene": "你負責的活動臨時出現場地、人力或流程問題，原訂計畫受到影響，其他人也在等你決定下一步。", "opts": [["先處理最急迫的問題，結束後再檢討原因。", "傾向先行動、後分析", "事後是否真的回顧並修正流程", "accountability"], ["確認現況與責任分工，快速重新安排。", "重視資訊、分工與協調", "避免在資訊不完整時急著找出誰該負責", "collaboration"], ["先弄清楚是誰或哪個環節沒有照約定完成。", "重視承諾與流程責任", "找原因是否有助解決，還是先急著歸責", "accountability"], ["覺得事情已經失控，容易煩躁或不想再管。", "壓力可能迅速影響行動意願", "如何把情緒調節與問題處理分開", "recovery"]], "follow": ["事情結束後，如果同類問題再次發生，你通常會怎麼做？", "如果你發現自己原本的安排也有疏漏，你會如何處理？", "如果問題其實是多個環節共同造成的，你會怎麼看待責任？", "當你感到煩躁、想退出處理時，什麼最可能幫助你重新行動？"], "followOpts": [["事後記錄原因，調整流程或準備備案。", "約相關人員簡短回顧，一起找出可以改善的地方。", "憑上次的經驗再應付一次，不特別準備。", "覺得這類問題難以避免，只能臨機應變。"], ["當場說明並修正，同時提醒大家一起調整。", "先處理眼前的狀況，事後再向相關人員說明。", "低調補強，希望不要影響大家對自己的看法。", "覺得有些懊惱，需要一點時間才能回到處理問題的狀態。"], ["責任可以分攤，重點是找出整體流程哪裡需要改。", "仍會想確認每個環節各自的責任，作為日後約定的依據。", "覺得很難釐清，容易感到困惑或煩躁。", "仍會傾向認為其中某個環節的責任比較大。"], ["暫時離開幾分鐘，讓自己穩定後再回來。", "把問題拆成幾個小步驟，先做最簡單的一個。", "請別人接手一部分，或請求協助。", "通常要等事情有人處理好，才比較能回到狀態。"]]}, {"title": "當團隊習慣和你的不同", "scene": "你加入一個新的合作小組，大家的溝通方式、工作節奏和決策習慣，與你過去熟悉的環境不太一樣。", "opts": [["先觀察一段時間，了解大家為什麼這樣做。", "傾向先理解環境再調整", "觀察是否有助理解，還是讓自己一直停留在旁觀", "collaboration"], ["提出自己熟悉的方法，討論能否改善效率。", "願意主動分享既有經驗", "提出建議時是否也理解他人的限制", "collaboration"], ["先照現有方式配合，避免一開始就造成摩擦。", "重視關係與適應", "是否因避免衝突而沒有說出重要疑慮", "agency"], ["覺得這裡的做法不太適合自己，逐漸減少參與。", "對不熟悉的環境可能降低投入", "區分真正不適合與尚未找到參與方式", "recovery"]], "follow": ["如果觀察後仍不完全理解大家的做法，你會怎麼辦？", "如果團隊沒有採用你的建議，你會怎麼反應？", "如果你發現配合現有方式會影響工作品質，你會怎麼處理？", "如果有一位夥伴主動邀請你參與，你會如何回應？"], "followOpts": [["直接詢問原因，並確認共同目標。", "請一位熟悉的夥伴私下說明。", "繼續觀察，覺得時間久了自然會懂。", "先照做，不再追究理由。"], ["請教大家的考量，並調整自己的想法。", "提供更具體的資料或小範圍試用，再討論一次。", "表面接受，但心裡有些失望。", "之後比較少主動提出建議。"], ["整理具體事實，找合適時機提出並討論。", "先找一位信任的夥伴確認自己的觀察。", "盡量自己多補強，避免麻煩大家。", "先維持現狀，等關係更穩定後再說。"], ["接受邀請，並表達自己還在適應。", "先答應參與一小部分，再評估是否合適。", "禮貌回應，但仍維持原本的參與程度。", "擔心自己跟不上，傾向婉拒。"]]}, {"title": "當你不熟悉談話內容", "scene": "團隊聚會時，大家熱烈討論一個你不熟悉的主題。你一時跟不上話題，但其他人看起來聊得很投入。", "opts": [["先聽大家怎麼說，等自己理解多一些再加入。", "偏向先理解再表達", "是否能在不完全熟悉時仍提出問題", "collaboration"], ["直接問大家在討論什麼，請他們解釋一下。", "願意承認資訊不足並主動詢問", "提問時是否能保持開放，而非只等著反駁", "openness"], ["把注意力轉到手機或其他事情，等話題過去。", "可能透過抽離降低不自在", "這是短暫休息，還是經常退出互動", "collaboration"], ["試著分享相近的經驗，讓自己也能參與。", "傾向從熟悉經驗連結話題", "是否有留意當下主題與他人的分享", "collaboration"]], "follow": ["如果話題一直沒有轉到你熟悉的範圍，你會怎麼做？", "如果對方的解釋仍讓你聽不太懂，你會怎麼回應？", "如果你發現自己常在這類場合抽離，你會怎麼看待這件事？", "如果別人沒有接續你的分享，你通常會怎麼做？"], "followOpts": [["找一個適當的點，提出一個真誠的問題。", "繼續聽，把這次當作認識新主題的機會。", "專心聽但不發言，等下一個話題。", "慢慢覺得無聊，注意力轉到別的事情上。"], ["坦白說明自己不熟悉，請對方從基本概念說起。", "用自己的話複述一遍，確認理解是否正確。", "笑著說「聽起來很複雜」，不再追問。", "覺得有點不好意思，之後改成自己查資料。"], ["想弄清楚自己是累了、無聊，還是不自在。", "想練習在不熟悉的場合，先提出一個簡單的問題。", "覺得這很正常，不太需要特別改變。", "擔心別人會覺得自己不合群。"], ["留意別人的反應，把話題交回去，聽聽他們的看法。", "補一句與當前話題的連結，讓分享更相關。", "覺得有些尷尬，之後比較少再分享。", "不太放在心上，繼續參與接下來的討論。"]]}, {"title": "當別人的成果比你突出", "scene": "一位投入時間比你少的夥伴，近期卻取得很好的成果，並受到大家肯定。你也一直很努力，但進展沒有那麼快。", "opts": [["想了解他做對了什麼，有沒有值得借鏡的地方。", "傾向把成果當作學習資訊", "是否能在真心欣賞對方的同時看見自己的需求", "openness"], ["先觀察他的成果能否持續，再決定要不要參考。", "重視長期證據與穩定性", "觀察是否公平，還是先降低對方成果的重要性", "openness"], ["提醒自己每個人的條件不同，繼續照自己的步調走。", "能保留自己的節奏", "是否用這個想法合理化不願調整的地方", "consistency"], ["會覺得自己的努力沒有被公平看見，心情受影響。", "對投入與回饋的落差敏感", "如何表達需求，而不是把比較轉成自我否定或怨懟", "recovery"]], "follow": ["如果你從他的做法中找到一個可以嘗試的方式，你會怎麼做？", "如果他的成果確實持續穩定，你會如何更新自己的看法？", "如果你發現自己的方法效果有限，你會怎麼調整？", "當你覺得不公平時，你會怎麼確認自己的判斷？"], "followOpts": [["挑一個小範圍先試用，觀察是否適合自己。", "直接請他分享細節，也請教可能的限制。", "想等自己準備得更充分再開始。", "擔心照做會像在模仿，猶豫要不要嘗試。"], ["承認這個做法有效，主動向他請教。", "把他的做法與自己的條件比較，找出可以採用的部分。", "認為他可能只是條件比較好，不一定適用於自己。", "心裡有些複雜，需要一段時間才能完全接受。"], ["訂出可檢視的目標與期限，定期評估方法。", "向有經驗的人請教，調整其中一個環節。", "再多堅持一段時間，看看是否會有變化。", "覺得這是自己的方式，不太想大幅改變。"], ["先區分哪些是事實、哪些是個人感受或推測。", "找信任的人聊聊，聽聽他們的看法。", "直接詢問相關的人，了解評估的標準。", "不太確認，先把情緒放一放。"]]}, {"title": "當努力一段時間仍看不到成果", "scene": "你持續投入一個目標幾週，花了時間也做了不少事，但結果沒有明顯進展，開始不確定是否值得繼續。", "opts": [["檢查方法與數據，找出哪個環節需要改變。", "傾向從方法與證據尋找突破", "避免只分析而遲遲不採取下一步", "accountability"], ["找有經驗的人討論，聽聽不同觀點。", "願意尋求外部回饋", "是否能評估建議是否適合自己的情境", "openness"], ["覺得可能是環境或時機不好，先等一等。", "會考慮外部條件的影響", "區分合理限制與把所有原因都放在外部", "accountability"], ["開始懷疑自己是不是沒有能力，想暫停。", "挫折可能影響自我評價與持續性", "把結果不理想與個人價值分開，找可控制的一步", "recovery"]], "follow": ["如果你發現原本的方法確實效果不佳，你會怎麼決定下一步？", "如果不同的人給了互相矛盾的建議，你會怎麼處理？", "如果外在條件短期內無法改變，你會怎麼做？", "當你開始懷疑自己時，什麼最可能幫助你回到可行動的狀態？"], "followOpts": [["設定一個小規模的新做法，並訂下檢視日期。", "向有經驗的人請教，再決定是否調整。", "繼續分析，等資料更完整再行動。", "感到氣餒，想先暫停一陣子。"], ["比較各項建議的證據、適用條件與可能成本。", "挑選其中一項小範圍試試，用結果判斷。", "傾向聽自己最信任的那個人的建議。", "感到困惑，一時不知道該聽誰的。"], ["列出可控制與不可控制的因素，先處理前者。", "調整目標或期限，讓計畫配合現有條件。", "繼續等待，期待條件會改善。", "考慮放棄這個目標，轉向其他事情。"], ["找可信任的人聊聊，聽聽他們看到的事實。", "把目標拆成更小的步驟，先完成一個。", "休息幾天，讓自己恢復後再回來。", "回顧過去做到的事情，提醒自己曾經有過進展。"]]}, {"title": "當出現更吸引人的新機會", "scene": "你已經承諾參與一項計畫，也投入了一段時間。此時出現一個看起來更有吸引力的新機會，但兩者很難同時兼顧。", "opts": [["先完成原本承諾，再評估下一個機會。", "重視承諾與持續性", "是否能在合理情況下調整承諾，而不是僵化地堅持", "consistency"], ["比較兩個機會的目標、成本與長期價值，再做決定。", "傾向明確評估取捨", "是否會把評估轉成無止境比較而延遲決策", "agency"], ["先和相關人員討論，確認能否調整原計畫。", "重視溝通與共同安排", "是否願意接受協商後不完全符合自己期待的結果", "collaboration"], ["很容易被新機會吸引，想先轉向再說。", "對新鮮感與機會保持敏感", "是否充分考慮既有承諾與轉換成本", "consistency"]], "follow": ["如果原本計畫仍需要你，而新機會也確實有價值，你會怎麼安排？", "如果比較後仍無法確定哪個更好，你會如何做決定？", "如果相關人員不同意調整原計畫，你會怎麼處理？", "如果新機會的熱度過一段時間後下降，你會怎麼看待自己的選擇？"], "followOpts": [["明確說明可投入的時間與責任，重新協調範圍。", "請教相關人員的意見，一起想可行的安排。", "堅持先做完原本的計畫，新機會就放手。", "兩邊都想顧，傾向先答應下來再想辦法。"], ["設定決策期限與最重要的判準，避免無限比較。", "請信任的人給意見，再自己做決定。", "選擇風險較低、較容易調整的那一個。", "繼續拖著，希望出現更明確的訊號。"], ["尊重討論結果，繼續完成原本的承諾。", "說明自己的考量，再協商部分調整的可能。", "感到不甘心，但仍會履行承諾。", "考慮仍然選擇新機會，並承擔後續的影響。"], ["回頭檢視當初的動機與實際成本，作為下次的參考。", "把它當作一次嘗試，繼續評估是否值得留下。", "有些後悔，覺得當初應該更慎重。", "不太在意，轉向下一個更有興趣的事情。"]]}, {"title": "當重要的小事一再被忘記", "scene": "最近你有幾次忘記回覆訊息、漏掉約定細節，或沒有在預定時間完成小任務。這些事情開始影響到別人的安排。", "opts": [["認真提醒自己下次要記得，先靠意志力改善。", "傾向靠自我提醒處理", "是否需要外部工具或流程，而不只要求自己更努力", "consistency"], ["建立行事曆、清單或固定提醒，降低遺漏機率。", "願意用系統支援執行", "工具是否簡單到能長期維持", "consistency"], ["先處理最急的事，其他事情有空再補。", "傾向按當下急迫性排序", "是否低估小承諾對他人安排的影響", "accountability"], ["覺得最近事情太多，先不想這些細節。", "可能受到負荷影響而暫時抽離", "是否需要重新安排負荷、尋求協助或明確告知", "recovery"]], "follow": ["如果你又漏掉一次相似的約定，你會怎麼處理？", "如果提醒工具使用一週後就被你忽略，你會怎麼調整？", "如果有些小事不急，卻會影響別人，你會怎麼安排？", "如果發現自己確實超出負荷，你會怎麼處理已答應的事情？"], "followOpts": [["主動向對方說明並補救，同時檢查哪裡出了問題。", "開始考慮加入提醒工具或固定流程。", "對自己有些失望，更加告誡自己要小心。", "先道歉，之後再看看會不會好一點。"], ["簡化提醒方式，固定在同一個時間檢查待辦。", "把提醒綁在既有的日常習慣上。", "換一種工具或形式，再試一次。", "覺得自己不適合用工具，回到靠記憶。"], ["重新排序，並提前告知可能延誤的事項。", "把這類小事集中在固定時段處理。", "先看對方是否催促，再決定處理順序。", "等有空再補，通常不特別告知。"], ["和相關人員協調期限或分工，不再默默承擔。", "列出所有承諾，先決定哪些要優先完成。", "盡量自己撐過去，不想麻煩別人。", "先放著，等壓力小一點再處理。"]]}];
-/* 題庫版本表（版本一旦發布就不可修改）：
-   v1：追問選項「每題共用一組」（followOpts[選項索引]）
-   v2：追問選項「依第一層選項各一組」（followOpts[第一層選項][選項索引]，皆為字串）
-   改題時「新增」BANKS[3]，把 QUESTION_SET_VERSION 改成 3，並同步新增 Functions 端的 BANKS。 */
-const BANKS = { 1: { q: BANK_V1, perMain: false }, 2: { q: BANK_V2, perMain: true } };
-const questions = BANKS[QUESTION_SET_VERSION].q;
+// 情境題：s = 各面向得分（0–3，可跨面向）
+const Q=[
+{id:'a1',tag:'面對建議',t:'你照自己的方式跑了一個月，成效普通。一位做得不錯的前輩建議你換一套做法。你最可能：',o:[
+ ['先照前輩的方式完整試兩週，再比較結果',{}],['挑其中我覺得有道理的部分，加進原本的做法',{A:1}],['先說明我的方法為什麼這樣設計，請他看完再給意見',{A:2}],['再給自己的方法一點時間，通常是執行量還不夠',{A:3}]]},
+{id:'b1',tag:'團隊合作',t:'夥伴在會議上分享他這個月成交了一筆大單。你第一個念頭比較接近：',o:[
+ ['他是怎麼談成的？想問問他的流程',{}],['這次運氣成分應該不小',{B:3}],['真不錯，我也要加油',{J:1}],['他手上的客戶本來就比較多',{B:2,G:1}]]},
+{id:'c1',tag:'學習',t:'主管又提到一個你已經聽過很多次的觀念。你的反應比較像：',o:[
+ ['心裡想「又是這個」，開始想別的事',{C:3,E:1}],['想想這次自己實際做到了幾成',{}],['點點頭，這部分我已經掌握了',{C:2}],['聽聽看這次有沒有新的例子',{C:1}]]},
+{id:'d1',tag:'團隊合作',t:'一位比你資淺的新人，提出和你不同的做法。你會：',o:[
+ ['先問他怎麼想的，有效的話我也學',{}],['提醒他這條路我走過，有幾個地方容易出問題',{D:2,A:1}],['讓他試試看，碰到問題他自然就懂了',{D:2,B:1}],['兩種做法各試一週，比較結果',{}]]},
+{id:'e1',tag:'團隊合作',t:'團隊聚會時，你們的話題最常落在：',o:[
+ ['生活瑣事、追劇或八卦',{E:3}],['最近誰做了什麼新嘗試',{}],['看氣氛，大家聊什麼就跟著聊',{E:2}],['目標進度和卡關的地方',{}]]},
+{id:'L1',lk:'A',rev:true,tag:'自我描述',t:'別人的建議，我通常會先完整照做一次，再判斷好不好。'},
+{id:'f1',tag:'團隊合作',t:'團隊要辦一場活動，需要分工。你會：',o:[
+ ['主動認領一塊，並跟其他人對進度',{}],['等分配到我再開始做',{F:2,E:1}],['我自己處理比較快，不太想等別人',{F:2,A:1}],['覺得這種場合不太適合我，盡量幫忙就好',{F:3}]]},
+{id:'g1',tag:'挫折',t:'客戶臨時取消了談好的訂單。你心裡的第一句話比較像：',o:[
+ ['最近景氣差，大家都在縮',{G:3}],['他根本沒什麼誠意',{G:2}],['是哪個環節我可以先預防？',{}],['算了，換下一位',{E:1}]]},
+{id:'h1',tag:'挫折',t:'連續被拒絕三次之後，你最常出現的念頭是：',o:[
+ ['我是不是不太適合做這個',{H:3}],['整理一下這三次被拒的原因',{}],['唉，又來了',{H:2}],['換個時段或對象再試',{}]]},
+{id:'i1',tag:'目標',t:'你今年設定的目標，到現在的狀況是：',o:[
+ ['跟年初一樣，進度有落差但沒換',{}],['中途換過一兩次，找到更適合的',{I:2}],['已經記不太清楚當初怎麼定的',{I:1,J:2}],['每季檢視後微調，大方向沒變',{}]]},
+{id:'j1',tag:'學習',t:'上完一堂很有感覺的課，回到家之後：',o:[
+ ['當晚寫下一個明天就要做的行動',{}],['很有動力，但過幾天就恢復原本的步調',{J:3}],['跟家人分享心得',{J:1}],['把筆記收好，之後需要時再翻',{J:2}]]},
+{id:'L2',lk:'G',rev:false,tag:'自我描述',t:'事情不順的時候，多半是環境或別人的因素。'},
+{id:'a2',tag:'學習',t:'一堂課的內容，有一半你覺得自己大致都懂。你會：',o:[
+ ['懂的部分當複習，專心找自己還沒做到的細節',{}],['懂的部分先處理手機訊息，重點段落再專心聽',{A:1,E:2}],['記下講師和我想法不同的地方，課後去問',{}],['判斷這堂對我幫助不大，下次挑進階一點的',{A:3,C:1}]]},
+{id:'b2',tag:'學習',t:'講師舉了一個成功案例，但對方的條件跟你很不一樣。你會：',o:[
+ ['找出案例裡可以搬到我身上的那一步',{}],['參考價值有限，那是特殊條件',{B:3}],['聽聽就好，每個人狀況不同',{B:2,E:1}],['問講師：如果是我這種條件，會怎麼調整',{}]]},
+{id:'c2',tag:'面對建議',t:'夥伴問你：「這個方法你試過嗎？」其實你只聽過、沒實際做過。你會回答：',o:[
+ ['「聽過，還沒實際做。」',{}],['「知道啊，那個我了解。」',{C:3}],['「大概知道原理。」',{C:2}],['「沒試過，你做的效果怎樣？」',{}]]},
+{id:'d2',tag:'面對建議',t:'客戶問你：「我為什麼要相信你？」你最自然會先講的是：',o:[
+ ['我在這行做很多年了',{D:3}],['我最近三個月的實際成果',{}],['其他客戶使用後的回饋',{}],['我的人生歷練比較豐富，看得多',{D:2}]]},
+{id:'L3',lk:'H',rev:false,tag:'自我描述',t:'我常覺得自己的條件比別人差。'},
+{id:'e2',tag:'學習',t:'群組裡有人分享一篇成功經驗的長文心得。你通常會：',o:[
+ ['已讀，有空再看',{E:3}],['看完並留言問一個問題',{}],['掃一下標題，跟我有關才點開',{E:2}],['看完後存起來',{J:1}]]},
+{id:'f2',tag:'團隊合作',t:'新加入一個團體，大家有自己的節奏和習慣用語。你會：',o:[
+ ['先觀察，跟著做幾次再說',{}],['覺得有點彆扭，先保持距離',{F:3}],['找一位熟悉的人請教這裡的規則',{}],['照自己的習慣來，合得來就合',{F:2,A:1}]]},
+{id:'g2',tag:'目標',t:'這個月目標沒有達成，檢討會上你最可能說：',o:[
+ ['這個月假日多、活動少',{G:3}],['我有兩個邀約沒有跟進到',{}],['支援有點不夠，資料太晚到',{G:2}],['我已經很努力了',{H:1,G:1}]]},
+{id:'h2',tag:'挫折',t:'朋友問你「最近好嗎？」你最常的回答是：',o:[
+ ['還好，就那樣',{H:2}],['有點忙，但有進展',{}],['累，最近不太順',{H:3}],['在調整一些事情',{}]]},
+{id:'i2',tag:'行動',t:'你看到別人做另一個項目，收入成長得很快。你會：',o:[
+ ['了解一下，但專注在原本的事',{}],['撥一點時間兼著試試看',{I:2}],['認真考慮轉過去',{I:3}],['回頭問自己：當初選這條路的理由還成立嗎？',{}]]},
+{id:'L4',lk:'C',rev:true,tag:'自我描述',t:'聽到熟悉的觀念時，我會重新檢查自己到底做到了沒。'},
+{id:'j2',tag:'目標',t:'關於你當初開始這份事業（或目前目標）的理由，你：',o:[
+ ['隨時說得出來，也常提醒自己',{}],['說得出來，但平常很少想起',{J:2}],['記得大概，細節有點模糊了',{J:2,I:1}],['寫在每天看得到的地方',{}]]},
+{id:'a3',tag:'行動',t:'團隊定了一套作業流程，你覺得其中一個步驟有點多餘。你會：',o:[
+ ['先照做一段時間，有了數據再提出來',{}],['提出來討論，若大家決定維持就照做',{}],['自己先省略，結果沒差就好',{A:3,F:1}],['照做，但心裡覺得只是形式',{A:1,B:2}]]},
+{id:'b3',tag:'面對建議',t:'有人給你一個很簡單的建議：「每天固定時間聯絡三位客戶。」你覺得：',o:[
+ ['簡單的事最難持續，我先做 30 天看看',{}],['道理都懂，但實際狀況複雜多了',{B:3,C:1}],['這有點基本，我想知道更進階的方法',{B:2,A:1}],['我有在做類似的，可以對照看看細節',{C:1}]]},
+{id:'c3',tag:'學習',t:'讀一本關於成功習慣的書時，你通常會：',o:[
+ ['遇到熟悉的觀念就快速翻過',{C:2}],['熟悉的觀念也會停下來，想想有沒有做到',{}],['只替新鮮的觀點畫線',{C:1}],['讀完很少回頭看，因為大部分都懂了',{C:3,J:1}]]},
+{id:'L5',lk:'F',rev:false,tag:'自我描述',t:'比起團隊分工，我更喜歡一個人把事情搞定。'},
+{id:'d3',tag:'學習',t:'年輕夥伴用新工具（例如 AI、短影音）做出了成績。你的想法比較接近：',o:[
+ ['想找他教我怎麼用',{}],['新工具來來去去，基本功才是長久的',{D:2,B:1}],['那是年輕人那一代的玩法',{D:3,F:1}],['先觀察一陣子，再決定要不要學',{D:1}]]},
+{id:'e3',tag:'行動',t:'突然多出一小時的空檔，你最可能：',o:[
+ ['滑短影音放鬆一下',{E:2}],['看一段跟目標有關的內容',{}],['找一個人聊聊近況和計畫',{}],['沒特別做什麼，時間就過去了',{E:3,I:1}]]},
+{id:'f3',tag:'挫折',t:'工作上卡關時，你的第一反應是：',o:[
+ ['自己再研究一下，盡量不麻煩別人',{F:2}],['直接問有經驗的夥伴',{}],['等下次開會再提出來',{F:1,J:1}],['先放著，去做別的事',{F:1,E:1}]]},
+{id:'L6',lk:'E',rev:true,tag:'自我描述',t:'我會主動找跟目標有關的話題和人聊天。'},
+{id:'g3',tag:'挫折',t:'看到身邊的人收入停滯、甚至被裁員，你的感受比較接近：',o:[
+ ['大環境就是這樣，不是個人能改變的',{G:3,H:1}],['提醒我現在就要建立第二條路',{}],['很同情，但跟我關係不大',{E:2}],['公司和政府應該負起責任',{G:2}]]},
+{id:'h3',tag:'目標',t:'想到三年後的自己，你比較接近哪一種：',o:[
+ ['大概跟現在差不多吧',{H:3}],['有具體的畫面，正在往那裡走',{}],['希望會更好，但不太敢想太多',{H:2}],['有方向，路徑還在摸索',{H:1}]]},
+{id:'i3',tag:'行動',t:'一件事做了兩個月，還沒看到明顯成果。你會：',o:[
+ ['開始懷疑方向，想換方法或換跑道',{I:3}],['對照計畫，看是量不夠還是方法錯',{}],['熱度下降，做得斷斷續續',{I:2,J:1}],['繼續做，但把標準放低一點',{I:1,H:1}]]},
+{id:'L7',lk:'D',rev:true,tag:'自我描述',t:'比我資淺的人，也常常讓我學到東西。'},
+{id:'j3',tag:'目標',t:'一週裡，你想到自己目標的時機通常是：',o:[
+ ['每天都會想到',{}],['開會或上課的時候',{J:3}],['遇到挫折的時候',{J:1,H:1}],['被別人問起的時候',{J:2,E:1}]]},
+{id:'L8',lk:'B',rev:false,tag:'自我描述',t:'我常覺得別人的成功，沒有表面上看起來那麼厲害。'},
+{id:'L9',lk:'I',rev:false,tag:'自我描述',t:'我很容易被新機會吸引，而分散原本的專注。'},
+{id:'L10',lk:'J',rev:true,tag:'自我描述',t:'上課時燃起的熱情，通常能維持到一週以後。'}
+];
+const LK=['非常不符合','不太符合','一半一半','還算符合','非常符合'];
 
-const $ = id => document.getElementById(id);
-const hasOwn = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
-const blank = () => questions.map(() => ({ main: null, follow: null }));
-function randInt(n) { const b = new Uint32Array(1); crypto.getRandomValues(b); return b[0] % n; }
-function shuffled(n) { const a = Array.from({ length: n }, (_, i) => i); for (let i = n - 1; i > 0; i--) { const j = randInt(i + 1); const t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
-/* 每位受試者、每次測驗隨機排列選項「顯示順序」；儲存與還原一律用原始索引 */
-function makeOrder() { return questions.map(() => ({ main: shuffled(4), follow: shuffled(4) })); }
+// 選項順序隨機（每次開始時決定，作答中固定）
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+let S={i:-1,ans:{},ord:{}};
+function save(){try{localStorage.setItem('hm-state',JSON.stringify(S))}catch(e){}}
+function load(){try{const v=JSON.parse(localStorage.getItem('hm-state'));if(v&&v.ans)S=v}catch(e){}}
+function newOrder(){S.ord={};Q.forEach(q=>{if(q.o)S.ord[q.id]=shuffle([0,1,2,3])})}
 
-let auth = null, db = null;
-let currentUser = null, currentProfile = null, isAdmin = false;
-let step = 0, phase = "main", answers = blank(), order = makeOrder();
-let currentReport = null, currentAttemptId = null, savedAttempt = false;
-let adminTab = "participants", idleTimer = null, profileSeq = 0, authMode = "login", pendingReg = null;
-const cache = { mine: [], participants: [], all: [], detail: [] };
+const app=document.getElementById('app');
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-/* ---------- 共用工具 ---------- */
-function esc(s) {
-  return String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-}
-function str(s) { return typeof s === "string" ? s.slice(0, 500) : ""; }
-function newId() {
-  const b = new Uint8Array(16);
-  crypto.getRandomValues(b);
-  return Array.from(b, x => x.toString(16).padStart(2, "0")).join("");
-}
-function showOnly(id) {
-  ["loginView", "homeView", "quizView", "reportView", "adminView"].forEach(x => $(x).classList.toggle("hidden", x !== id));
-}
-function setLoginStatus(s) { const el = $("loginStatus"); if (el) el.textContent = s; }
-function safeError(e) {
-  const code = (e && e.code) ? String(e.code) : "";
-  if (/invalid-credential|wrong-password|user-not-found|invalid-login/.test(code)) return "帳號或密碼錯誤。";
-  if (code.includes("email-already-in-use")) return "此信箱已註冊，請改用「登入」。";
-  if (code.includes("weak-password")) return "密碼強度不足，請至少使用 8 個字元。";
-  if (code.includes("invalid-email")) return "電子信箱格式不正確。";
-  if (code.includes("user-disabled")) return "此帳號已停用，請聯絡管理者。";
-  if (code.includes("too-many-requests") || code.includes("resource-exhausted")) return "嘗試次數過多，請稍後再試。";
-  if (code.includes("permission-denied")) return "權限不足，請確認帳號狀態或聯絡管理者。";
-  if (code.includes("unauthenticated")) return "登入已失效，請重新登入。";
-  if (code.includes("unavailable") || code.includes("network")) return "網路異常，請稍後再試。";
-  return "操作失敗，請稍後再試。";   /* 不回傳原始錯誤訊息，避免洩漏內部資訊 */
-}
-function fmtDate(ts) {
-  if (!ts) return "尚未完成";
-  const d = ts.toDate ? ts.toDate() : new Date(ts);
-  return d.toLocaleString("zh-TW", { year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" });
-}
-function toMillis(ts) { if (!ts) return 0; return ts.toMillis ? ts.toMillis() : new Date(ts).getTime(); }
-
-/* ---------- 作答資料：只信任「選項索引」，文字由「該紀錄所屬版本」的題庫還原 ---------- */
-function versionOf(a) { return Number.isInteger(a && a.questionSetVersion) ? a.questionSetVersion : 1; }
-function toItem(r, i, ver) {
-  if (!r || typeof r !== "object") return null;
-  if (Number.isInteger(r.m) && Number.isInteger(r.f)) {            /* schemaVersion 2：索引 */
-    const bank = hasOwn(BANKS, ver) ? BANKS[ver] : null, q = bank && bank.q[i];
-    if (!q || !q.opts[r.m]) return null;
-    const fo = bank.perMain ? (q.followOpts[r.m] || [])[r.f] : (q.followOpts[r.f] || [])[0];
-    if (typeof fo !== "string") return null;
-    const m = q.opts[r.m];
-    return { n: i + 1, title: q.title, scene: q.scene, mainText: m[0], observe: m[1], reflect: m[2], followQuestion: q.follow[r.m], followText: fo };
-  }
-  if (typeof r.mainText === "string") {                              /* schemaVersion 1（舊資料，僅供顯示） */
-    return { n: i + 1, title: str(r.title), scene: "", mainText: str(r.mainText), observe: "", reflect: "", followQuestion: str(r.followQuestion), followText: str(r.followText) };
-  }
-  return null;
-}
-function itemsOf(a) {
-  const list = Array.isArray(a && a.answers) ? a.answers : [];
-  const ver = versionOf(a), out = [];
-  list.forEach((r, i) => { const it = toItem(r, i, ver); if (it) out.push(it); });
-  return out;
-}
-function excerpt(a) { const t = (a && typeof a.actionPlan === "string") ? a.actionPlan.trim() : ""; return t ? (t.length > 30 ? t.slice(0, 30) + "…" : t) : "未填寫"; }
-
-/* 單一情境的反思卡：你的選擇 → 可能的觀察 → 值得留意 → 追問與你的選擇 */
-function sceneCards(items) {
-  return items.map(x => {
-    let h = '<div class="report-card scene" style="margin-top:12px"><div class="label">情境 ' + x.n + '</div><h3>' + esc(x.title) + '</h3>';
-    if (x.scene) h += '<p class="muted">' + esc(x.scene) + '</p>';
-    h += '<div class="pair"><div class="pairbox"><div class="label">第一反應</div><p>' + esc(x.mainText) + '</p></div>' +
-         '<div class="pairbox"><div class="label">進一步思考後</div><p class="muted">' + esc(x.followQuestion) + '</p><p>' + esc(x.followText) + '</p></div></div>';
-    if (x.observe) h += '<p class="kv"><strong>可能的觀察：</strong>' + esc(x.observe) + '。</p>';
-    if (x.reflect) h += '<p class="kv"><strong>值得留意：</strong>' + esc(x.reflect) + '。</p>';
-    return h + '</div>';
-  }).join("");
-}
-function buildReport() {
-  const items = answers.map((a, i) => toItem({ m: a.main, f: a.follow }, i, QUESTION_SET_VERSION)).filter(Boolean);
-  return { items };
-}
-
-/* ---------- 初始化與登入（Email＋密碼，不需要 Cloud Functions） ---------- */
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const ts = () => firebase.firestore.FieldValue.serverTimestamp();
-async function init() {
-  try {
-    if (firebaseConfig.apiKey.startsWith("YOUR_") || firebaseConfig.appId.startsWith("YOUR_")) {
-      setLoginStatus("尚未完成 Firebase 設定。請管理者先設定 Firebase Web App。");
-      return;
-    }
-    firebase.initializeApp(firebaseConfig);
-    auth = firebase.auth();
-    db = firebase.firestore();
-    /* 受試者資料敏感：登入狀態只保留在本分頁，關閉分頁即登出，避免共用電腦殘留 */
-    await auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
-    auth.onAuthStateChanged(async user => {
-      if (!user) { resetSession(); showOnly("loginView"); return; }
-      currentUser = user;
-      await loadProfile();
-    });
-  } catch (e) {
-    console.error(e);
-    setLoginStatus("系統初始化失敗，請稍後再試或聯絡管理者。");
-  }
-}
-
-function setMode(m, keepStatus) {
-  authMode = m === "register" ? "register" : "login";
-  const reg = authMode === "register";
-  $("nameField").classList.toggle("hidden", !reg);
-  $("consentRow").classList.toggle("hidden", !reg);
-  $("password").setAttribute("autocomplete", reg ? "new-password" : "current-password");
-  $("loginBtn").textContent = reg ? "建立帳號" : "登入";
-  $("modeLoginBtn").className = "btn" + (reg ? " secondary" : "");
-  $("modeRegBtn").className = "btn" + (reg ? "" : " secondary");
-  if (!keepStatus) setLoginStatus("");
-}
-
-async function submitAuth() {
-  if (!auth) { setLoginStatus("系統尚未完成設定，請聯絡管理者。"); return; }
-  const email = $("email").value.trim().toLowerCase(), pw = $("password").value;
-  const reg = authMode === "register";
-  if (!EMAIL_RE.test(email) || email.length > 120) { setLoginStatus("請輸入正確的電子信箱。"); return; }
-  let name = "";
-  if (reg) {
-    name = $("displayName").value.replace(/[\u0000-\u001f\u007f]/g, " ").trim().slice(0, 40);
-    if (!name) { setLoginStatus("請輸入你的稱呼。"); return; }
-    if (pw.length < 8) { setLoginStatus("密碼請至少使用 8 個字元。"); return; }
-    if (!$("consent").checked) { setLoginStatus("請先勾選「我已閱讀並同意」資料使用說明。"); return; }
-  } else if (!pw) { setLoginStatus("請輸入密碼。"); return; }
-  const b = $("loginBtn");
-  b.disabled = true;
-  setLoginStatus(reg ? "正在建立帳號…" : "正在登入…");
-  try {
-    if (reg) {
-      pendingReg = { displayName: name };      /* 須在建立帳號前設定：登入狀態變更會立刻觸發 loadProfile */
-      try {
-        await auth.createUserWithEmailAndPassword(email, pw);
-      } catch (e) {
-        if (e && e.code === "auth/email-already-in-use") {      /* 帳號已存在但可能尚未建立個人資料：用同一組密碼嘗試補完 */
-          try { await auth.signInWithEmailAndPassword(email, pw); }
-          catch (e2) { throw e; }
-        } else { throw e; }
-      }
-    } else {
-      await auth.signInWithEmailAndPassword(email, pw);
-    }
-    $("password").value = "";
-    setLoginStatus("");
-  } catch (e) {
-    pendingReg = null;
-    setLoginStatus(safeError(e));
-  } finally {
-    b.disabled = false;
-  }
-}
-
-async function resetPassword() {
-  if (!auth) return;
-  const email = $("email").value.trim().toLowerCase();
-  if (!EMAIL_RE.test(email)) { setLoginStatus("請先在上方輸入你的電子信箱，再按「忘記密碼」。"); return; }
-  try { await auth.sendPasswordResetEmail(email); }
-  catch (e) {
-    const c = String(e && e.code || "");
-    if (/network|too-many|unavailable/.test(c)) { setLoginStatus(safeError(e)); return; }
-  }
-  setLoginStatus("若此信箱已註冊，重設密碼的信件會寄到該信箱（請同時檢查垃圾郵件）。");
-}
-
-async function loadProfile() {
-  const my = ++profileSeq;
-  try {
-    /* 管理者＝Firestore 的 admins/{uid} 文件存在；該集合前端不能寫入，只能在 Firebase Console 手動建立 */
-    const adm = await db.collection("admins").doc(currentUser.uid).get();
-    if (my !== profileSeq) return;
-    isAdmin = adm.exists;      /* 僅用於切換畫面；真正的權限由 Firestore Rules 強制 */
-    if (isAdmin) {
-      pendingReg = null;
-      currentProfile = { displayName: "管理者" };
-      showOnly("adminView");
-      armIdle();
-      await refreshAdmin();
-      return;
-    }
-    const ref = db.collection("participants").doc(currentUser.uid);
-    let snap = await ref.get();
-    if (my !== profileSeq) return;
-    if (!snap.exists) {
-      if (!pendingReg) {
-        await auth.signOut();
-        setLoginStatus("此帳號尚未完成註冊。請切換到「註冊新帳號」，填寫稱呼並勾選同意。");
-        return;
-      }
-      await ref.set({ displayName: pendingReg.displayName, email: currentUser.email, active: true, createdAt: ts(), consentAt: ts() });
-      snap = await ref.get();
-    }
-    pendingReg = null;
-    if (my !== profileSeq) return;
-    if (snap.data().active !== true) {
-      await auth.signOut();
-      setLoginStatus("此帳號已停用，請聯絡管理者。");
-      return;
-    }
-    currentProfile = snap.data();
-    $("welcomeName").textContent = "已登入：" + (currentProfile.displayName || "受試者");
-    showOnly("homeView");
-    armIdle();
-    await loadMyHistory();
-  } catch (e) {
-    pendingReg = null;
-    try { await auth.signOut(); } catch (e2) {}
-    setLoginStatus(safeError(e));
-  }
-}
-
-async function logout(msg) {
-  clearTimeout(idleTimer);
-  try { if (auth) await auth.signOut(); } catch (e) {}
-  resetSession();
-  showOnly("loginView");
-  setLoginStatus(typeof msg === "string" ? msg : "");
-}
-
-/* 登出／切換使用者時，清除記憶體與畫面上所有個人資料 */
-function resetSession() {
-  clearTimeout(idleTimer);
-  currentUser = null; currentProfile = null; isAdmin = false; pendingReg = null;
-  step = 0; phase = "main"; answers = blank(); order = makeOrder();
-  currentReport = null; currentAttemptId = null; savedAttempt = false;
-  cache.mine = []; cache.participants = []; cache.all = []; cache.detail = [];
-  ["historyList", "reportContent", "quizContent", "adminContent", "adminDetail", "welcomeName", "saveStatus", "reportStatus"]
-    .forEach(id => { const el = $(id); if (el) el.textContent = ""; });
-  $("email").value = ""; $("password").value = ""; $("displayName").value = "";
-  $("consent").checked = false;
-  $("adminDetail").classList.add("hidden");
-  setMode("login", true);      /* 保留登入頁上的提示訊息（例如「此帳號已停用」） */
-}
-
-function armIdle() {
-  clearTimeout(idleTimer);
-  if (!currentUser) return;
-  const mins = isAdmin ? IDLE_MINUTES.admin : IDLE_MINUTES.participant;
-  idleTimer = setTimeout(() => logout("因閒置過久，已自動登出。"), mins * 60000);
-}
-
-/* ---------- 測驗流程 ---------- */
-function startQuiz() {
-  step = 0; phase = "main"; answers = blank(); order = makeOrder();
-  currentReport = null; currentAttemptId = null; savedAttempt = false;
-  $("saveStatus").textContent = "";
-  showOnly("quizView");
-  renderQuestion();
-}
-function renderQuestion() {
-  const q = questions[step], follow = phase === "follow", total = questions.length * 2, current = step * 2 + (follow ? 2 : 1);
-  $("stageLabel").textContent = follow ? "深入追問 · " + (step + 1) + "/" + questions.length : "情境探索 · " + (step + 1) + "/" + questions.length;
-  $("progressText").textContent = "第 " + current + " / " + total + " 題｜剩餘 " + (total - current) + " 題（含深入追問）";
-  $("progressBar").style.width = (current / total * 100) + "%";
-  $("backBtn").disabled = step === 0 && phase === "main";
-  const next = $("nextBtn");
-  next.textContent = follow ? (step === questions.length - 1 ? "完成測驗並查看報告 ↗" : "確認並繼續 →") : "確認選擇 →";
-  const ord = follow ? order[step].follow : order[step].main;
-  let title, scene, texts, selected;
-  if (!follow) {
-    title = q.title; scene = q.scene; texts = ord.map(k => q.opts[k][0]); selected = answers[step].main;
-  } else {
-    title = "再往內看一步"; scene = q.follow[answers[step].main] || ""; texts = ord.map(k => q.followOpts[answers[step].main][k]); selected = answers[step].follow;
-  }
-  let out = '<div class="tag">' + (follow ? "第二層追問" : "情境題") + '</div><h2 class="question">' + esc(title) + '</h2><p class="sub">' + esc(scene) + '</p><div class="choices">';
-  texts.forEach((t, pos) => {
-    const isSel = selected === ord[pos];
-    out += '<button type="button" class="choice ' + (isSel ? "selected" : "") + '" aria-pressed="' + isSel + '" data-act="selectOption" data-arg="' + pos + '"><span class="letter">' + String.fromCharCode(65 + pos) + '</span><span class="choice-copy">' + esc(t) + '</span></button>';
+function score(){
+  const r={};K.forEach(k=>r[k]={e:0,m:0,se:0,sm:0,lk:null});
+  Q.forEach(q=>{
+    const a=S.ans[q.id];
+    if(q.lk){const d=r[q.lk];d.m+=3;if(a!=null){const v=q.rev?(5-a)*.75:(a-1)*.75;d.e+=v;d.lk=v/3}}
+    else{K.forEach(k=>{const mx=Math.max(...q.o.map(o=>o[1][k]||0));if(!mx)return;r[k].m+=mx;r[k].sm+=mx;if(a!=null){const v=q.o[a][1][k]||0;r[k].e+=v;r[k].se+=v}})}
   });
-  $("quizContent").innerHTML = out + "</div>";
-  next.disabled = selected === null;
+  return K.map(k=>{const d=r[k];return{k,pct:Math.round(d.e/d.m*100),sc:d.sm?d.se/d.sm:0,lk:d.lk}});
 }
-function selectOption(pos) {
-  if (!Number.isInteger(pos) || pos < 0 || pos > 3) return;
-  const orig = (phase === "main" ? order[step].main : order[step].follow)[pos];
-  if (phase === "main") { answers[step].main = orig; answers[step].follow = null; } else { answers[step].follow = orig; }
-  renderQuestion();
-}
-function nextStep() {
-  if (phase === "main") {
-    if (answers[step].main === null) return;
-    phase = "follow"; renderQuestion(); return;
-  }
-  if (answers[step].follow === null) return;
-  if (step === questions.length - 1) {
-    currentReport = buildReport();
-    currentAttemptId = newId();       /* 供伺服器做冪等處理，避免重複點擊產生多筆紀錄 */
-    savedAttempt = false;
-    renderReport();
-    setReportMode("new");
-    showOnly("reportView");
-    return;
-  }
-  step++; phase = "main"; renderQuestion();
-}
-function goBack() {
-  if (phase === "follow") phase = "main"; else if (step > 0) { step--; phase = "follow"; }
-  renderQuestion();
+const level=p=>p>=66?[3,'明顯盲點']:p>=46?[2,'值得留意']:p>=26?[1,'偶爾出現']:[0,'穩健'];
+const lvColor=p=>p>=46?'var(--warn)':'var(--accent)';
+
+function radar(res,sample){
+  const cx=200,cy=200,R=125,n=res.length,ang=i=>-Math.PI/2+i*2*Math.PI/n;
+  const pt=(i,v)=>[cx+Math.cos(ang(i))*R*v,cy+Math.sin(ang(i))*R*v];
+  const top=sample?[]:res.slice().sort((a,b)=>b.pct-a.pct).slice(0,3).map(x=>x.k);
+  let s=`<svg class="radar" viewBox="-30 0 460 400" role="img" aria-label="十個面向的盲點指數雷達圖">`;
+  [.25,.5,.75,1].forEach(f=>{s+=`<polygon class="ring" points="${res.map((_,i)=>pt(i,f).join(',')).join(' ')}"/>`});
+  [25,50,75,100].forEach(v=>{s+=`<text class="rl" x="${cx+4}" y="${cy-R*v/100+11}">${v}</text>`});
+  res.forEach((d,i)=>{const[x,y]=pt(i,1);s+=`<line class="axis" x1="${cx}" y1="${cy}" x2="${x}" y2="${y}"/>`});
+  s+=`<polygon class="area" points="${res.map((d,i)=>pt(i,Math.max(d.pct,3)/100).join(',')).join(' ')}"/>`;
+  res.forEach((d,i)=>{const[x,y]=pt(i,Math.max(d.pct,3)/100);s+=`<circle class="dot" cx="${x}" cy="${y}" r="3.5"/>`});
+  res.forEach((d,i)=>{const[x,y]=pt(i,1.17);const c=Math.cos(ang(i));const an=Math.abs(c)<.2?'middle':c>0?'start':'end';
+    s+=`<text x="${x}" y="${y+5}" text-anchor="${an}" class="${top.includes(d.k)?'top':''}">${DIMS[d.k].name}</text>`});
+  return s+'</svg>';
 }
 
-/* ---------- 報告（反思型：不分類、不排名、不計次） ---------- */
-function setReportMode(mode) {
-  const isNew = mode === "new";
-  $("saveBtn").classList.toggle("hidden", !isNew);
-  $("saveBtn").disabled = false;
-  $("reportStatus").textContent = "";
-}
-function renderReport() {
-  const out = '<div class="report-head"><div class="label">個人反思報告</div><h2>看見模式，<br>為下一次保留選擇。</h2><p>這份報告不會替你分類、評分或排名。它把你在 10 個假設情境中的選擇整理出來，並附上可能的觀察與值得留意的地方，請對照真實經驗，判斷哪些符合你、哪些不符合。</p></div>' +
-    '<div class="report-card" style="margin-top:14px"><div class="label">怎麼閱讀</div><h3>用事實驗證，不急著接受標籤</h3><ol><li>先看每個情境中，你的「第一反應」與「進一步思考後」的選擇是否一致；若不同，是什麼讓你調整？</li><li>「可能的觀察」只是依單一選擇做的推測，請用最近一次真實經驗檢驗：當時你做了什麼、別人如何回應、結果如何？</li><li>挑 1～2 個最有感的情境，在最後寫下一個小行動。</li></ol></div>' +
-    sceneCards(currentReport.items) +
-    '<div class="actionbox"><h3>我的七天微行動</h3><p>寫下一個具體、可觀察的小行動。</p><textarea id="actionText" maxlength="1000" placeholder="例：下次收到不同意見時，我會先問一個釐清問題，再說明自己的考量。"></textarea></div>';
-  $("reportContent").innerHTML = out;
-}
-async function saveCurrentAttempt() {
-  if (!currentUser || !currentReport || savedAttempt || !db) return;
-  const btn = $("saveBtn"), st = $("reportStatus");
-  btn.disabled = true;
-  st.textContent = "正在安全儲存…";
-  const ta = $("actionText");
-  const docId = currentUser.uid + "_" + currentAttemptId;     /* 固定文件 ID：同一份報告重複送出只會有一筆 */
-  const ref = db.collection("attempts").doc(docId);
-  try {
-    const actionPlan = ta ? ta.value.trim().slice(0, 1000) : "";
-    /* 只存「選項索引」；欄位內容受 Firestore Rules 驗證（uid、稱呼、時間、題數、索引範圍） */
-    await ref.set({
-      uid: currentUser.uid,
-      displayName: currentProfile.displayName,
-      answers: answers.map(a => ({ m: a.main, f: a.follow })),
-      actionPlan,
-      createdAt: ts(),
-      schemaVersion: 2,
-      questionSetVersion: QUESTION_SET_VERSION
-    });
-    savedAttempt = true;
-    if (ta) ta.readOnly = true;
-    st.textContent = "本次測驗已儲存。你可以在首頁查看歷次紀錄。";
-  } catch (e) {
-    let already = false;      /* 網路逾時但其實已寫入：再次送出會被規則擋下，這裡確認是否已存在 */
-    try { already = (await ref.get()).exists; } catch (e2) {}
-    if (already) {
-      savedAttempt = true;
-      if (ta) ta.readOnly = true;
-      st.textContent = "本次測驗已儲存。你可以在首頁查看歷次紀錄。";
-    } else {
-      st.textContent = "儲存失敗：" + safeError(e);
-      btn.disabled = false;
-    }
-  }
+function intro(){
+  const has=Object.keys(S.ans).length;
+  const sample=K.map((k,i)=>({k,pct:[42,58,35,20,64,30,48,55,38,70][i]}));
+  app.innerHTML=`
+  <header style="display:grid;gap:10px">
+    <span class="eyebrow">自我覺察 · 情境檢測</span>
+    <h1>成功習慣盲點檢測</h1>
+    <p class="muted">40 個日常情境，約 8 分鐘。看見自己的慣性反應，和成功習慣之間還差哪一步。</p>
+  </header>
+  <section class="card">
+    <h2>作答前</h2>
+    <ul class="notes">
+      <li>選「你真的會怎麼做」，不是「你覺得應該怎麼做」。</li>
+      <li>沒有標準答案，每個選項都是常見的反應。</li>
+      <li>如果都不完全符合，選最接近的那一個。</li>
+      <li>結果只存在你這台裝置的瀏覽器裡。</li>
+    </ul>
+    <div class="row">
+      <button class="btn" id="start">${has?'重新開始':'開始作答'}</button>
+      ${has?`<button class="btn ghost" id="resume">${has>=Q.length?'查看上次結果':'繼續上次進度（'+has+'/'+Q.length+'）'}</button>`:''}
+    </div>
+  </section>
+  <section class="card">
+    <div class="row" style="justify-content:space-between"><h3>完成後你會看到</h3><span class="tag">結果範例</span></div>
+    ${radar(sample,true)}
+    <p class="muted" style="font-size:.92rem">十個面向的盲點雷達圖、依分數排序的清單，以及最需要留意的 3 個面向：具體會出現的行為，和可以馬上開始的改善行動。</p>
+  </section>`;
+  document.getElementById('start').onclick=()=>{S={i:0,ans:{},ord:{}};newOrder();save();question()};
+  const r=document.getElementById('resume');if(r)r.onclick=()=>{if(!Object.keys(S.ord).length)newOrder();has>=Q.length?result():(S.i=Math.min(has,Q.length-1),question())};
 }
 
-/* 歷次紀錄／管理者檢視共用 */
-function attemptBody(a) {
-  const items = itemsOf(a);
-  const had = Array.isArray(a && a.answers) && a.answers.length > 0;
-  const cards = items.length ? sceneCards(items)
-    : (had ? '<div class="report-card" style="margin-top:12px"><p class="muted">此紀錄使用的題庫版本（v' + esc(versionOf(a)) + '）已不在此頁面中，無法還原作答明細。</p></div>' : "");
-  return cards + '<div class="actionbox"><h3>七天微行動</h3><p>' + esc(a.actionPlan || "未填寫") + '</p></div>';
-}
-async function loadMyHistory() {
-  if (!currentUser || isAdmin) return;
-  const box = $("historyList");
-  box.textContent = "載入中…";
-  try {
-    const snap = await db.collection("attempts").where("uid", "==", currentUser.uid).limit(100).get();
-    const rows = snap.docs.map(d => Object.assign({ id: d.id }, d.data())).sort((a, b) => toMillis(b.createdAt) - toMillis(a.createdAt));
-    cache.mine = rows;
-    if (!rows.length) { box.innerHTML = '<p class="muted">尚無已儲存的測驗紀錄。完成測驗後，請在報告頁按「儲存本次報告」。</p>'; return; }
-    box.innerHTML = '<table><thead><tr><th>日期</th><th>我的七天微行動</th><th>操作</th></tr></thead><tbody>' +
-      rows.map(a => '<tr><td>' + esc(fmtDate(a.createdAt)) + '</td><td>' + esc(excerpt(a)) + '</td><td><button type="button" class="btn secondary" data-act="viewAttempt" data-arg="' + esc(a.id) + '">查看</button></td></tr>').join("") +
-      '</tbody></table>';
-  } catch (e) {
-    box.textContent = "載入失敗：" + safeError(e);
-  }
-}
-function viewAttempt(id) {
-  const a = cache.mine.find(x => x.id === id);
-  if (!a) return;
-  $("reportContent").innerHTML = '<div class="report-head"><div class="label">歷次測驗紀錄</div><h2>' + esc(fmtDate(a.createdAt)) + '</h2><p>這是你先前儲存的反思紀錄。</p></div>' + attemptBody(a);
-  setReportMode("history");
-  showOnly("reportView");
-}
-function backHome() {
-  $("reportStatus").textContent = "";
-  showOnly(isAdmin ? "adminView" : "homeView");
-  if (!isAdmin) loadMyHistory();
+function question(){
+  const q=Q[S.i],a=S.ans[q.id];
+  let body;
+  if(q.lk){body=`<div class="lk" role="group" aria-label="符合程度">${LK.map((l,i)=>`<button data-v="${i+1}" class="${a===i+1?'sel':''}"><b>${i+1}</b>${l}</button>`).join('')}</div>`}
+  else{body=`<div class="opts">${S.ord[q.id].map(oi=>`<button class="opt ${a===oi?'sel':''}" data-v="${oi}">${esc(q.o[oi][0])}</button>`).join('')}</div>`}
+  app.innerHTML=`
+  <div class="qmeta"><span>第 ${S.i+1} / ${Q.length} 題</span><span>${Math.round(Object.keys(S.ans).length/Q.length*100)}%</span></div>
+  <div class="progress"><i style="width:${(S.i+1)/Q.length*100}%"></i></div>
+  <section class="card">
+    <span><span class="tag">${q.tag}</span></span>
+    <p class="qtext">${esc(q.t)}</p>
+    ${body}
+    <div class="row" style="justify-content:space-between">
+      <button class="btn ghost" id="prev" ${S.i===0?'disabled':''}>上一題</button>
+      <button class="btn ghost" id="home">回首頁</button>
+    </div>
+  </section>`;
+  app.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>{
+    S.ans[q.id]=+b.dataset.v;save();
+    app.querySelectorAll('[data-v]').forEach(x=>x.classList.toggle('sel',x===b));
+    setTimeout(()=>{if(S.i<Q.length-1){S.i++;save();question()}else{const miss=Q.findIndex(x=>S.ans[x.id]==null);if(miss>=0){S.i=miss;question()}else result()}},220);
+  });
+  document.getElementById('prev').onclick=()=>{S.i--;save();question()};
+  document.getElementById('home').onclick=intro;
+  window.scrollTo(0,0);
 }
 
-/* ---------- 管理者 ---------- */
-async function refreshAdmin() { if (isAdmin) await showAdminTab(adminTab); }
-async function showAdminTab(tab) {
-  adminTab = tab;
-  $("adminDetail").classList.add("hidden");
-  const box = $("adminContent");
-  box.textContent = "載入中…";
-  try {
-    if (tab === "participants") {
-      const snap = await db.collection("participants").get();
-      const rows = snap.docs.map(d => Object.assign({ id: d.id }, d.data()))
-        .sort((a, b) => (a.displayName || "").localeCompare(b.displayName || "", "zh-Hant"));
-      cache.participants = rows;
-      box.innerHTML = rows.length ? '<table><thead><tr><th>受試者</th><th>信箱</th><th>狀態</th><th>註冊時間</th><th>操作</th></tr></thead><tbody>' +
-        rows.map(p => '<tr><td>' + esc(p.displayName || "未命名") + '</td><td>' + esc(p.email || "") + '</td><td><span class="pill">' + (p.active ? "啟用" : "已停用") + '</span></td><td>' + esc(fmtDate(p.createdAt)) + '</td><td>' +
-          '<button type="button" class="btn secondary" data-act="viewParticipant" data-arg="' + esc(p.id) + '">查看紀錄</button>' +
-          '<button type="button" class="btn ghost" data-act="toggleParticipant" data-arg="' + esc(p.id) + '" data-active="' + (!p.active) + '">' + (p.active ? "停用帳號" : "重新啟用") + '</button></td></tr>').join("") +
-        '</tbody></table>' : '<p class="muted">尚未建立受試者。</p>';
-    } else {
-      const LIMIT = 200;
-      const snap = await db.collection("attempts").orderBy("createdAt", "desc").limit(LIMIT).get();
-      const rows = snap.docs.map(d => Object.assign({ id: d.id }, d.data()));
-      cache.all = rows;
-      box.innerHTML = rows.length ? '<table><thead><tr><th>受試者</th><th>日期</th><th>七天微行動</th><th>操作</th></tr></thead><tbody>' +
-        rows.map(a => '<tr><td>' + esc(a.displayName || a.uid) + '</td><td>' + esc(fmtDate(a.createdAt)) + '</td><td>' + esc(excerpt(a)) + '</td><td><button type="button" class="btn secondary" data-act="viewAdminAttempt" data-arg="' + esc(a.id) + '">查看報告</button></td></tr>').join("") +
-        '</tbody></table>' + (rows.length >= LIMIT ? '<p class="muted">僅顯示最近 ' + LIMIT + ' 筆；較早的紀錄請從「受試者管理」逐人查看。</p>' : "") :
-        '<p class="muted">目前沒有測驗紀錄。</p>';
-    }
-  } catch (e) {
-    box.textContent = "載入失敗：" + safeError(e);
-  }
-}
-async function viewParticipant(uid) {
-  try {
-    const snap = await db.collection("attempts").where("uid", "==", uid).limit(200).get();
-    const rows = snap.docs.map(d => Object.assign({ id: d.id }, d.data())).sort((a, b) => toMillis(b.createdAt) - toMillis(a.createdAt));
-    cache.detail = rows;
-    const p = cache.participants.find(x => x.id === uid);
-    const box = $("adminDetail");
-    box.classList.remove("hidden");
-    box.innerHTML = '<div class="row"><div><h3>' + esc((p && p.displayName) || uid) + '</h3><p class="muted">共 ' + rows.length + ' 次測驗紀錄</p></div><button type="button" class="btn ghost" data-act="closeDetail">關閉</button></div>' +
-      (rows.length ? '<div class="tablewrap"><table><thead><tr><th>日期</th><th>七天微行動</th><th>操作</th></tr></thead><tbody>' +
-        rows.map(a => '<tr><td>' + esc(fmtDate(a.createdAt)) + '</td><td>' + esc(excerpt(a)) + '</td><td><button type="button" class="btn secondary" data-act="viewAdminAttempt" data-arg="' + esc(a.id) + '">完整作答</button></td></tr>').join("") +
-        '</tbody></table></div>' : '<p class="muted">此人尚無已儲存的測驗紀錄。</p>');
-  } catch (e) {
-    alert(safeError(e));
-  }
-}
-async function viewAdminAttempt(id) {
-  const a = cache.all.find(x => x.id === id) || cache.detail.find(x => x.id === id) || await fetchAttempt(id);
-  if (!a) return;
-  const box = $("adminDetail");
-  box.classList.remove("hidden");
-  box.innerHTML = '<div class="row"><div><h3>' + esc(a.displayName || "受試者") + '｜' + esc(fmtDate(a.createdAt)) + '</h3><p class="muted">管理者專用：個人作答與反思報告</p></div><div><button type="button" class="btn ghost" data-act="deleteAttempt" data-arg="' + esc(a.id) + '">刪除此紀錄</button> <button type="button" class="btn ghost" data-act="closeDetail">關閉</button></div></div>' + attemptBody(a);
-}
-async function fetchAttempt(id) {
-  try { const d = await db.collection("attempts").doc(id).get(); return d.exists ? Object.assign({ id: d.id }, d.data()) : null; }
-  catch (e) { alert(safeError(e)); return null; }
-}
-async function toggleParticipant(uid, active) {
-  if (!isAdmin) return;
-  if (!confirm((active ? "重新啟用" : "停用") + "此受試者帳號？停用後他將無法登入查看或儲存紀錄。")) return;
-  try { await db.collection("participants").doc(uid).update({ active }); await refreshAdmin(); }
-  catch (e) { alert(safeError(e)); }
-}
-async function deleteAttempt(id) {
-  if (!isAdmin || typeof id !== "string") return;
-  if (!confirm("確定永久刪除這筆紀錄？此動作無法復原。")) return;
-  try { await db.collection("attempts").doc(id).delete(); $("adminDetail").classList.add("hidden"); await refreshAdmin(); }
-  catch (e) { alert(safeError(e)); }
+function result(){
+  const res=score();
+  const sorted=res.slice().sort((a,b)=>b.pct-a.pct);
+  const top=sorted.slice(0,3),best=sorted.slice(-2).reverse();
+  const gap=res.filter(d=>d.lk!=null&&Math.abs(d.sc-d.lk)>=.5).map(d=>DIMS[d.k].name);
+  const avg=Math.round(res.reduce((s,d)=>s+d.pct,0)/res.length);
+  const cons=gap.length<=1?['高','情境題和自我描述題的方向一致，結果可信度較高。']:gap.length<=3?['中',`「${gap.join('、')}」的情境反應和自我描述有些落差，這通常代表這幾個面向在不同情境下表現不一，可以多留意。`]:['偏低',`有 ${gap.length} 個面向的情境反應和自我描述不太一致。建議以情境題的反應為主要參考，過一兩週再測一次。`];
+  app.innerHTML=`
+  <header style="display:grid;gap:8px">
+    <span class="eyebrow">你的檢測結果</span>
+    <h1>盲點雷達</h1>
+    <p class="muted">分數越高，代表這個面向的慣性反應離成功習慣越遠，也是成長空間最大的地方。整體平均 <b style="color:var(--ink)">${avg}</b>。</p>
+  </header>
+  <section class="card">
+    ${radar(res)}
+    <div class="legend"><span>0–25 穩健</span><span>26–45 偶爾出現</span><span>46–65 值得留意</span><span>66–100 明顯盲點</span></div>
+  </section>
+  <section class="card">
+    <h2>十個面向排序</h2>
+    <div class="rank">${sorted.map((d,i)=>{const L=level(d.pct);return`<div class="rk"><span class="n">${i+1}</span><span>${DIMS[d.k].name}</span><span class="bar"><i style="width:${Math.max(d.pct,2)}%;background:${lvColor(d.pct)}"></i></span><span class="v">${d.pct}</span></div>`}).join('')}</div>
+    <p class="cons">作答一致性：<b>${cons[0]}</b>。${cons[1]}</p>
+  </section>
+  <h2 style="margin-top:8px">最需要留意的 3 個面向</h2>
+  ${top.map((d,i)=>{const D=DIMS[d.k],L=level(d.pct);return`
+  <section class="card focus">
+    <div class="head"><div style="display:grid;gap:2px"><span class="sub">第 ${i+1} 名 · 對應課程「${D.orig}」</span><h3>${D.name} <span class="lv lv-${L[0]}">${L[1]}</span></h3></div><span class="score">${d.pct}</span></div>
+    <p>${D.desc}</p>
+    <div style="display:grid;gap:6px"><span class="sub">你可能會出現的行為</span><ul>${D.beh.map(b=>`<li>${b}</li>`).join('')}</ul></div>
+    <div style="display:grid;gap:6px"><span class="sub">這週就能開始的改善行動</span><ol>${D.act.map(b=>`<li>${b}</li>`).join('')}</ol></div>
+    <p class="reframe">${D.rf}</p>
+  </section>`}).join('')}
+  <section class="card">
+    <h2>你已經做得不錯的地方</h2>
+    <div class="strength">${best.map(d=>`<p><b>${DIMS[d.k].name}（${d.pct}）</b>：你在「${DIMS[d.k].str}」這件事上表現穩定，可以當作帶動其他面向的支點。</p>`).join('')}</div>
+    <p class="muted" style="font-size:.9rem">建議 30 天後再測一次，比較雷達圖的變化。改變一個習慣，通常比同時改三個更容易成功：先從第 1 名的第一個行動開始。</p>
+    <div class="row"><button class="btn" id="again">重新作答</button><button class="btn ghost" id="home2">回首頁</button></div>
+  </section>`;
+  document.getElementById('again').onclick=()=>{S={i:0,ans:{},ord:{}};newOrder();save();question()};
+  document.getElementById('home2').onclick=intro;
+  window.scrollTo(0,0);
 }
 
-/* ---------- 事件綁定（取代所有內嵌 onclick，才能啟用嚴格 CSP） ---------- */
-const ACTIONS = {
-  submit: () => submitAuth(),
-  mode: a => setMode(a),
-  resetPw: () => resetPassword(),
-  startQuiz: () => startQuiz(),
-  selectOption: a => selectOption(parseInt(a, 10)),
-  nextStep: () => nextStep(),
-  goBack: () => goBack(),
-  save: () => saveCurrentAttempt(),
-  print: () => window.print(),
-  home: () => backHome(),
-  logout: () => logout(),
-  refreshHistory: () => loadMyHistory(),
-  adminTab: a => showAdminTab(a === "attempts" ? "attempts" : "participants"),
-  refreshAdmin: () => refreshAdmin(),
-  deleteAttempt: a => deleteAttempt(a),
-  viewAttempt: a => viewAttempt(a),
-  viewParticipant: a => viewParticipant(a),
-  viewAdminAttempt: a => viewAdminAttempt(a),
-  toggleParticipant: (a, t) => toggleParticipant(a, t.dataset.active === "true"),
-  closeDetail: () => $("adminDetail").classList.add("hidden")
-};
-document.addEventListener("click", e => {
-  const t = e.target.closest("[data-act]");
-  if (!t || t.disabled) return;
-  const fn = hasOwn(ACTIONS, t.dataset.act) ? ACTIONS[t.dataset.act] : null;
-  if (fn) fn(t.dataset.arg, t);
-});
-["email", "password", "displayName"].forEach(id => $(id).addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); submitAuth(); } }));
-["click", "keydown", "touchstart"].forEach(ev => document.addEventListener(ev, armIdle, { passive: true }));
-
-init();
-})();
-
+load();intro();
 </script>
-</body></html>
+
+</body>
+</html>
