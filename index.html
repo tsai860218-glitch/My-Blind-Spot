@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-uO+Kp4Q5vij/Z/p+pC8mo6TNp7WjXkLDvV4LquL1Jsk=' https://www.gstatic.com https://www.google.com; style-src 'unsafe-inline'; img-src 'self' data:; connect-src https://*.googleapis.com https://*.cloudfunctions.net https://*.run.app https://www.google.com; frame-src https://my-blind-spot.firebaseapp.com https://www.google.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-sNwh2exe68dxcLKN/UTbOHMT8FvL0zB3/VL+Uf42hcw=' https://www.gstatic.com https://apis.google.com https://www.google.com; style-src 'unsafe-inline'; img-src 'self' data:; connect-src https://*.googleapis.com https://my-blind-spot.firebaseapp.com; frame-src https://my-blind-spot.firebaseapp.com https://www.google.com; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,10 +28,13 @@
 
 <section id="loginView" class="panel">
 <div class="eyebrow">PRIVATE REFLECTION SPACE</div><h1 style="font-size:32px;line-height:1.25">看不見的自己。</h1>
-<div class="notice"><strong>作答與資料使用說明</strong><br>本測驗用於個人自我反思與成長。你的作答、測驗結果及歷次紀錄會儲存在雲端資料庫，供你日後查看；繁星商學院指定的系統管理者也能查看受試者的作答與結果，以進行測驗管理與整體規劃。其他受試者不能查看你的個人資料。本工具不是心理診斷或標準化心理測驗。請勿填入不必要的敏感個人資訊。如需查詢、更正或刪除你的資料，請聯絡管理者。</div>
-<label class="consent"><input type="checkbox" id="consent"><span>我已閱讀並同意上述資料使用說明。</span></label>
-<div class="field"><label for="accessCode">你的專屬登入碼</label><input id="accessCode" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="64" placeholder="輸入管理者提供的登入碼"></div>
-<div class="row"><button type="button" class="btn" id="loginBtn" data-act="login">登入／查看自己的紀錄</button><span class="muted">請勿將登入碼轉交他人</span></div><div id="loginStatus" class="status" role="status"></div>
+<div class="notice"><strong>作答與資料使用說明</strong><br>本測驗用於個人自我反思與成長。你的作答、測驗結果及歷次紀錄會儲存在雲端資料庫，供你日後查看；繁星商學院指定的系統管理者也能查看受試者的作答與結果，以進行測驗管理與整體規劃。其他受試者不能查看你的個人資料。本工具不是心理診斷或標準化心理測驗。請勿填入不必要的敏感個人資訊。如需查詢、更正或刪除你的資料，請聯絡管理者。請使用只有你自己知道的密碼，並避免與其他網站共用。</div>
+<div class="admin-tabs" style="margin:14px 0 4px"><button type="button" class="btn" id="modeLoginBtn" data-act="mode" data-arg="login">登入</button><button type="button" class="btn secondary" id="modeRegBtn" data-act="mode" data-arg="register">註冊新帳號</button></div>
+<div class="field hidden" id="nameField"><label for="displayName">你的稱呼（管理者看得到）</label><input id="displayName" type="text" maxlength="40" autocomplete="nickname" placeholder="例如：小明"></div>
+<div class="field"><label for="email">電子信箱（作為帳號）</label><input id="email" type="email" maxlength="120" autocomplete="username" spellcheck="false" placeholder="name@example.com"></div>
+<div class="field"><label for="password">密碼</label><input id="password" type="password" maxlength="128" autocomplete="current-password" placeholder="至少 8 個字元"></div>
+<label class="consent hidden" id="consentRow"><input type="checkbox" id="consent"><span>我已閱讀並同意上述資料使用說明。</span></label>
+<div class="row"><button type="button" class="btn" id="loginBtn" data-act="submit">登入</button><button type="button" class="btn ghost" data-act="resetPw">忘記密碼</button></div><div id="loginStatus" class="status" role="status"></div>
 </section>
 
 <section id="homeView" class="hidden">
@@ -45,17 +48,15 @@
 
 <section id="reportView" class="panel hidden"><div class="label">YOUR REFLECTION REPORT</div><div id="reportContent"></div><div class="row report-actions" style="margin-top:18px"><button type="button" class="btn" id="saveBtn" data-act="save">儲存本次報告</button><button type="button" class="btn secondary" data-act="print">列印／另存 PDF</button><button type="button" class="btn ghost" data-act="home">返回我的首頁</button></div><div id="reportStatus" class="status" role="status"></div></section>
 
-<section id="adminView" class="panel hidden"><div class="row"><div><div class="eyebrow">ADMIN ONLY</div><h1 style="margin:4px 0">管理者後台</h1><p class="muted">個人作答與報告僅限授權管理者查看；請妥善保管管理者登入碼。</p></div><button type="button" class="btn ghost" data-act="logout">登出</button></div>
+<section id="adminView" class="panel hidden"><div class="row"><div><div class="eyebrow">ADMIN ONLY</div><h1 style="margin:4px 0">管理者後台</h1><p class="muted">個人作答與報告僅限授權管理者查看；請使用高強度且不重複的管理者密碼。</p></div><button type="button" class="btn ghost" data-act="logout">登出</button></div>
 <div class="admin-tabs"><button type="button" class="btn" data-act="adminTab" data-arg="participants">受試者管理</button><button type="button" class="btn secondary" data-act="adminTab" data-arg="attempts">所有測驗紀錄</button><button type="button" class="btn secondary" data-act="refreshAdmin">重新整理</button></div>
-<div id="adminCreate" class="card"><h3>新增受試者與產生專屬登入碼</h3><p class="muted">登入碼只會在建立時顯示一次，請用安全方式交付給本人。</p><div class="row"><div class="field" style="flex:1;min-width:190px"><label for="participantName">受試者稱呼</label><input id="participantName" maxlength="40" autocomplete="off" placeholder="例如：夥伴 A"></div><button type="button" class="btn" style="align-self:end" data-act="createParticipant">建立登入碼</button></div><div id="newCodeBox" class="notice hidden"></div><div id="adminCreateStatus" class="status" role="status"></div></div>
+<div id="adminCreate" class="card"><h3>帳號管理</h3><p class="muted">受試者在登入頁自行註冊。你可以在「受試者管理」停用帳號，或在紀錄詳情中刪除單筆紀錄。管理者帳號請在 Firebase Console 建立（見設定步驟）。</p></div>
 <div id="adminContent" class="tablewrap"></div><div id="adminDetail" class="card hidden"></div></section>
 <p class="footnote">繁星商學院｜《看不見的自己》自我反思工具。未經心理計量驗證，不應用於診斷、招聘、績效評定或判定他人品格。資料存取由 Firebase Authentication、Cloud Functions 與 Firestore Rules 控管。</p></div>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-functions-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-check-compat.js"></script>
 <script>
 "use strict";
 (function () {
@@ -74,8 +75,6 @@ const firebaseConfig = {
   projectId: "my-blind-spot",
   appId: "1:275503026869:web:3933aa99e6b7e1ee68e4fc"
 };
-const FUNCTION_REGION = "asia-east1";
-const APP_CHECK_SITE_KEY = "";           /* 啟用 App Check（reCAPTCHA Enterprise）後填入 site key */
 const QUESTION_SET_VERSION = 2;          /* 目前使用的題庫版本；改題時新增版本並遞增，舊紀錄才不會被錯誤還原 */
 const IDLE_MINUTES = { participant: 30, admin: 15 };
 
@@ -96,11 +95,11 @@ function shuffled(n) { const a = Array.from({ length: n }, (_, i) => i); for (le
 /* 每位受試者、每次測驗隨機排列選項「顯示順序」；儲存與還原一律用原始索引 */
 function makeOrder() { return questions.map(() => ({ main: shuffled(4), follow: shuffled(4) })); }
 
-let auth = null, db = null, functions = null;
+let auth = null, db = null;
 let currentUser = null, currentProfile = null, isAdmin = false;
 let step = 0, phase = "main", answers = blank(), order = makeOrder();
 let currentReport = null, currentAttemptId = null, savedAttempt = false;
-let adminTab = "participants", lastNewCode = "", idleTimer = null, codeTimer = null, profileSeq = 0;
+let adminTab = "participants", idleTimer = null, profileSeq = 0, authMode = "login", pendingReg = null;
 const cache = { mine: [], participants: [], all: [], detail: [] };
 
 /* ---------- 共用工具 ---------- */
@@ -119,12 +118,14 @@ function showOnly(id) {
 function setLoginStatus(s) { const el = $("loginStatus"); if (el) el.textContent = s; }
 function safeError(e) {
   const code = (e && e.code) ? String(e.code) : "";
+  if (/invalid-credential|wrong-password|user-not-found|invalid-login/.test(code)) return "帳號或密碼錯誤。";
+  if (code.includes("email-already-in-use")) return "此信箱已註冊，請改用「登入」。";
+  if (code.includes("weak-password")) return "密碼強度不足，請至少使用 8 個字元。";
+  if (code.includes("invalid-email")) return "電子信箱格式不正確。";
+  if (code.includes("user-disabled")) return "此帳號已停用，請聯絡管理者。";
+  if (code.includes("too-many-requests") || code.includes("resource-exhausted")) return "嘗試次數過多，請稍後再試。";
   if (code.includes("permission-denied")) return "權限不足，請確認帳號狀態或聯絡管理者。";
   if (code.includes("unauthenticated")) return "登入已失效，請重新登入。";
-  if (code.includes("not-found")) return "登入碼無效或已停用。";
-  if (code.includes("resource-exhausted")) return "嘗試次數過多，請稍後再試。";
-  if (code.includes("invalid-argument")) return "輸入內容不符合格式，請檢查後再試。";
-  if (code.includes("failed-precondition")) return "系統驗證未通過，請重新整理頁面後再試。";
   if (code.includes("unavailable") || code.includes("network")) return "網路異常，請稍後再試。";
   return "操作失敗，請稍後再試。";   /* 不回傳原始錯誤訊息，避免洩漏內部資訊 */
 }
@@ -177,7 +178,9 @@ function buildReport() {
   return { items };
 }
 
-/* ---------- 初始化與登入 ---------- */
+/* ---------- 初始化與登入（Email＋密碼，不需要 Cloud Functions） ---------- */
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const ts = () => firebase.firestore.FieldValue.serverTimestamp();
 async function init() {
   try {
     if (firebaseConfig.apiKey.startsWith("YOUR_") || firebaseConfig.appId.startsWith("YOUR_")) {
@@ -185,10 +188,8 @@ async function init() {
       return;
     }
     firebase.initializeApp(firebaseConfig);
-    if (APP_CHECK_SITE_KEY && firebase.appCheck) firebase.appCheck().activate(APP_CHECK_SITE_KEY, true);
     auth = firebase.auth();
     db = firebase.firestore();
-    functions = firebase.app().functions(FUNCTION_REGION);
     /* 受試者資料敏感：登入狀態只保留在本分頁，關閉分頁即登出，避免共用電腦殘留 */
     await auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
     auth.onAuthStateChanged(async user => {
@@ -202,45 +203,101 @@ async function init() {
   }
 }
 
-async function login() {
-  if (!functions || !auth) { setLoginStatus("系統尚未完成設定，請聯絡管理者。"); return; }
-  const code = $("accessCode").value.trim();
-  if (!code) { setLoginStatus("請輸入專屬登入碼。"); return; }
-  if (!$("consent").checked) { setLoginStatus("請先勾選「我已閱讀並同意」資料使用說明。"); return; }
+function setMode(m, keepStatus) {
+  authMode = m === "register" ? "register" : "login";
+  const reg = authMode === "register";
+  $("nameField").classList.toggle("hidden", !reg);
+  $("consentRow").classList.toggle("hidden", !reg);
+  $("password").setAttribute("autocomplete", reg ? "new-password" : "current-password");
+  $("loginBtn").textContent = reg ? "建立帳號" : "登入";
+  $("modeLoginBtn").className = "btn" + (reg ? " secondary" : "");
+  $("modeRegBtn").className = "btn" + (reg ? "" : " secondary");
+  if (!keepStatus) setLoginStatus("");
+}
+
+async function submitAuth() {
+  if (!auth) { setLoginStatus("系統尚未完成設定，請聯絡管理者。"); return; }
+  const email = $("email").value.trim().toLowerCase(), pw = $("password").value;
+  const reg = authMode === "register";
+  if (!EMAIL_RE.test(email) || email.length > 120) { setLoginStatus("請輸入正確的電子信箱。"); return; }
+  let name = "";
+  if (reg) {
+    name = $("displayName").value.replace(/[\u0000-\u001f\u007f]/g, " ").trim().slice(0, 40);
+    if (!name) { setLoginStatus("請輸入你的稱呼。"); return; }
+    if (pw.length < 8) { setLoginStatus("密碼請至少使用 8 個字元。"); return; }
+    if (!$("consent").checked) { setLoginStatus("請先勾選「我已閱讀並同意」資料使用說明。"); return; }
+  } else if (!pw) { setLoginStatus("請輸入密碼。"); return; }
   const b = $("loginBtn");
   b.disabled = true;
-  setLoginStatus("正在驗證…");
+  setLoginStatus(reg ? "正在建立帳號…" : "正在登入…");
   try {
-    const result = await functions.httpsCallable("redeemAccessCode")({ code, consent: true });
-    if (!result.data || typeof result.data.token !== "string") throw new Error("bad-response");
-    await auth.signInWithCustomToken(result.data.token);
-    $("accessCode").value = "";
+    if (reg) {
+      pendingReg = { displayName: name };      /* 須在建立帳號前設定：登入狀態變更會立刻觸發 loadProfile */
+      try {
+        await auth.createUserWithEmailAndPassword(email, pw);
+      } catch (e) {
+        if (e && e.code === "auth/email-already-in-use") {      /* 帳號已存在但可能尚未建立個人資料：用同一組密碼嘗試補完 */
+          try { await auth.signInWithEmailAndPassword(email, pw); }
+          catch (e2) { throw e; }
+        } else { throw e; }
+      }
+    } else {
+      await auth.signInWithEmailAndPassword(email, pw);
+    }
+    $("password").value = "";
     setLoginStatus("");
   } catch (e) {
+    pendingReg = null;
     setLoginStatus(safeError(e));
   } finally {
     b.disabled = false;
   }
 }
 
+async function resetPassword() {
+  if (!auth) return;
+  const email = $("email").value.trim().toLowerCase();
+  if (!EMAIL_RE.test(email)) { setLoginStatus("請先在上方輸入你的電子信箱，再按「忘記密碼」。"); return; }
+  try { await auth.sendPasswordResetEmail(email); }
+  catch (e) {
+    const c = String(e && e.code || "");
+    if (/network|too-many|unavailable/.test(c)) { setLoginStatus(safeError(e)); return; }
+  }
+  setLoginStatus("若此信箱已註冊，重設密碼的信件會寄到該信箱（請同時檢查垃圾郵件）。");
+}
+
 async function loadProfile() {
   const my = ++profileSeq;
   try {
-    const token = await currentUser.getIdTokenResult(true);
+    /* 管理者＝Firestore 的 admins/{uid} 文件存在；該集合前端不能寫入，只能在 Firebase Console 手動建立 */
+    const adm = await db.collection("admins").doc(currentUser.uid).get();
     if (my !== profileSeq) return;
-    isAdmin = token.claims.admin === true;     /* 僅用於切換畫面；真正的權限由 Firestore Rules 與 Functions 強制 */
+    isAdmin = adm.exists;      /* 僅用於切換畫面；真正的權限由 Firestore Rules 強制 */
     if (isAdmin) {
+      pendingReg = null;
       currentProfile = { displayName: "管理者" };
       showOnly("adminView");
       armIdle();
       await refreshAdmin();
       return;
     }
-    const snap = await db.collection("participants").doc(currentUser.uid).get();
+    const ref = db.collection("participants").doc(currentUser.uid);
+    let snap = await ref.get();
     if (my !== profileSeq) return;
-    if (!snap.exists || snap.data().active !== true) {
+    if (!snap.exists) {
+      if (!pendingReg) {
+        await auth.signOut();
+        setLoginStatus("此帳號尚未完成註冊。請切換到「註冊新帳號」，填寫稱呼並勾選同意。");
+        return;
+      }
+      await ref.set({ displayName: pendingReg.displayName, email: currentUser.email, active: true, createdAt: ts(), consentAt: ts() });
+      snap = await ref.get();
+    }
+    pendingReg = null;
+    if (my !== profileSeq) return;
+    if (snap.data().active !== true) {
       await auth.signOut();
-      setLoginStatus("此登入碼已停用，請聯絡管理者。");
+      setLoginStatus("此帳號已停用，請聯絡管理者。");
       return;
     }
     currentProfile = snap.data();
@@ -249,6 +306,7 @@ async function loadProfile() {
     armIdle();
     await loadMyHistory();
   } catch (e) {
+    pendingReg = null;
     try { await auth.signOut(); } catch (e2) {}
     setLoginStatus(safeError(e));
   }
@@ -262,20 +320,19 @@ async function logout(msg) {
   setLoginStatus(typeof msg === "string" ? msg : "");
 }
 
-/* 登出／切換使用者時，清除記憶體與畫面上所有個人資料（含管理者新產生的登入碼） */
+/* 登出／切換使用者時，清除記憶體與畫面上所有個人資料 */
 function resetSession() {
-  clearTimeout(idleTimer); clearTimeout(codeTimer);
-  currentUser = null; currentProfile = null; isAdmin = false;
+  clearTimeout(idleTimer);
+  currentUser = null; currentProfile = null; isAdmin = false; pendingReg = null;
   step = 0; phase = "main"; answers = blank(); order = makeOrder();
-  currentReport = null; currentAttemptId = null; savedAttempt = false; lastNewCode = "";
+  currentReport = null; currentAttemptId = null; savedAttempt = false;
   cache.mine = []; cache.participants = []; cache.all = []; cache.detail = [];
-  ["historyList", "reportContent", "quizContent", "adminContent", "adminDetail", "newCodeBox", "welcomeName", "saveStatus", "reportStatus", "adminCreateStatus"]
+  ["historyList", "reportContent", "quizContent", "adminContent", "adminDetail", "welcomeName", "saveStatus", "reportStatus"]
     .forEach(id => { const el = $(id); if (el) el.textContent = ""; });
-  $("participantName").value = "";
-  $("accessCode").value = "";
+  $("email").value = ""; $("password").value = ""; $("displayName").value = "";
   $("consent").checked = false;
-  $("newCodeBox").classList.add("hidden");
   $("adminDetail").classList.add("hidden");
+  setMode("login", true);      /* 保留登入頁上的提示訊息（例如「此帳號已停用」） */
 }
 
 function armIdle() {
@@ -359,26 +416,39 @@ function renderReport() {
   $("reportContent").innerHTML = out;
 }
 async function saveCurrentAttempt() {
-  if (!currentUser || !currentReport || savedAttempt || !functions) return;
+  if (!currentUser || !currentReport || savedAttempt || !db) return;
   const btn = $("saveBtn"), st = $("reportStatus");
   btn.disabled = true;
   st.textContent = "正在安全儲存…";
+  const ta = $("actionText");
+  const docId = currentUser.uid + "_" + currentAttemptId;     /* 固定文件 ID：同一份報告重複送出只會有一筆 */
+  const ref = db.collection("attempts").doc(docId);
   try {
-    const ta = $("actionText");
     const actionPlan = ta ? ta.value.trim().slice(0, 1000) : "";
-    /* 只送「選項索引」；姓名、uid、時間全部由伺服器決定，不信任前端 */
-    await functions.httpsCallable("saveAttempt")({
-      attemptId: currentAttemptId,
+    /* 只存「選項索引」；欄位內容受 Firestore Rules 驗證（uid、稱呼、時間、題數、索引範圍） */
+    await ref.set({
+      uid: currentUser.uid,
+      displayName: currentProfile.displayName,
       answers: answers.map(a => ({ m: a.main, f: a.follow })),
       actionPlan,
+      createdAt: ts(),
+      schemaVersion: 2,
       questionSetVersion: QUESTION_SET_VERSION
     });
     savedAttempt = true;
     if (ta) ta.readOnly = true;
     st.textContent = "本次測驗已儲存。你可以在首頁查看歷次紀錄。";
   } catch (e) {
-    st.textContent = "儲存失敗：" + safeError(e);
-    btn.disabled = false;
+    let already = false;      /* 網路逾時但其實已寫入：再次送出會被規則擋下，這裡確認是否已存在 */
+    try { already = (await ref.get()).exists; } catch (e2) {}
+    if (already) {
+      savedAttempt = true;
+      if (ta) ta.readOnly = true;
+      st.textContent = "本次測驗已儲存。你可以在首頁查看歷次紀錄。";
+    } else {
+      st.textContent = "儲存失敗：" + safeError(e);
+      btn.disabled = false;
+    }
   }
 }
 
@@ -420,37 +490,6 @@ function backHome() {
 }
 
 /* ---------- 管理者 ---------- */
-function hideNewCode() {
-  clearTimeout(codeTimer); lastNewCode = "";
-  $("newCodeBox").textContent = "";
-  $("newCodeBox").classList.add("hidden");
-}
-async function createParticipant() {
-  if (!isAdmin) return;
-  const name = $("participantName").value.trim().slice(0, 40);
-  const st = $("adminCreateStatus");
-  if (!name) { st.textContent = "請先填寫受試者稱呼。"; return; }
-  try {
-    const r = await functions.httpsCallable("createParticipantCode")({ displayName: name });
-    if (!r.data || typeof r.data.code !== "string") throw new Error("bad-response");
-    lastNewCode = r.data.code;
-    const box = $("newCodeBox");
-    box.classList.remove("hidden");
-    box.innerHTML = '<strong>新登入碼（僅顯示這一次，約 2 分鐘後自動隱藏）：</strong><br><span style="font-size:20px;letter-spacing:.08em;user-select:all">' + esc(lastNewCode) + '</span> <button type="button" class="btn secondary" data-act="copyCode">複製</button>';
-    clearTimeout(codeTimer);
-    codeTimer = setTimeout(hideNewCode, 120000);
-    st.textContent = "已建立受試者。登入碼不會以明文儲存。";
-    $("participantName").value = "";
-    await refreshAdmin();
-  } catch (e) {
-    st.textContent = safeError(e);
-  }
-}
-async function copyCode() {
-  const st = $("adminCreateStatus");
-  try { await navigator.clipboard.writeText(lastNewCode); st.textContent = "已複製登入碼。"; }
-  catch (e) { st.textContent = "無法自動複製，請手動選取登入碼。"; }
-}
 async function refreshAdmin() { if (isAdmin) await showAdminTab(adminTab); }
 async function showAdminTab(tab) {
   adminTab = tab;
@@ -460,13 +499,13 @@ async function showAdminTab(tab) {
   try {
     if (tab === "participants") {
       const snap = await db.collection("participants").get();
-      const rows = snap.docs.map(d => Object.assign({ id: d.id }, d.data())).filter(x => x.id !== "admin-main")
+      const rows = snap.docs.map(d => Object.assign({ id: d.id }, d.data()))
         .sort((a, b) => (a.displayName || "").localeCompare(b.displayName || "", "zh-Hant"));
       cache.participants = rows;
-      box.innerHTML = rows.length ? '<table><thead><tr><th>受試者</th><th>狀態</th><th>建立時間</th><th>操作</th></tr></thead><tbody>' +
-        rows.map(p => '<tr><td>' + esc(p.displayName || "未命名") + '</td><td><span class="pill">' + (p.active ? "啟用" : "已停用") + '</span></td><td>' + esc(fmtDate(p.createdAt)) + '</td><td>' +
+      box.innerHTML = rows.length ? '<table><thead><tr><th>受試者</th><th>信箱</th><th>狀態</th><th>註冊時間</th><th>操作</th></tr></thead><tbody>' +
+        rows.map(p => '<tr><td>' + esc(p.displayName || "未命名") + '</td><td>' + esc(p.email || "") + '</td><td><span class="pill">' + (p.active ? "啟用" : "已停用") + '</span></td><td>' + esc(fmtDate(p.createdAt)) + '</td><td>' +
           '<button type="button" class="btn secondary" data-act="viewParticipant" data-arg="' + esc(p.id) + '">查看紀錄</button>' +
-          '<button type="button" class="btn ghost" data-act="toggleParticipant" data-arg="' + esc(p.id) + '" data-active="' + (!p.active) + '">' + (p.active ? "停用登入碼" : "重新啟用") + '</button></td></tr>').join("") +
+          '<button type="button" class="btn ghost" data-act="toggleParticipant" data-arg="' + esc(p.id) + '" data-active="' + (!p.active) + '">' + (p.active ? "停用帳號" : "重新啟用") + '</button></td></tr>').join("") +
         '</tbody></table>' : '<p class="muted">尚未建立受試者。</p>';
     } else {
       const LIMIT = 200;
@@ -503,21 +542,30 @@ async function viewAdminAttempt(id) {
   if (!a) return;
   const box = $("adminDetail");
   box.classList.remove("hidden");
-  box.innerHTML = '<div class="row"><div><h3>' + esc(a.displayName || "受試者") + '｜' + esc(fmtDate(a.createdAt)) + '</h3><p class="muted">管理者專用：個人作答與反思報告</p></div><button type="button" class="btn ghost" data-act="closeDetail">關閉</button></div>' + attemptBody(a);
+  box.innerHTML = '<div class="row"><div><h3>' + esc(a.displayName || "受試者") + '｜' + esc(fmtDate(a.createdAt)) + '</h3><p class="muted">管理者專用：個人作答與反思報告</p></div><div><button type="button" class="btn ghost" data-act="deleteAttempt" data-arg="' + esc(a.id) + '">刪除此紀錄</button> <button type="button" class="btn ghost" data-act="closeDetail">關閉</button></div></div>' + attemptBody(a);
 }
 async function fetchAttempt(id) {
   try { const d = await db.collection("attempts").doc(id).get(); return d.exists ? Object.assign({ id: d.id }, d.data()) : null; }
   catch (e) { alert(safeError(e)); return null; }
 }
 async function toggleParticipant(uid, active) {
-  if (!confirm((active ? "重新啟用" : "停用") + "此受試者登入碼？")) return;
-  try { await functions.httpsCallable("setParticipantActive")({ uid, active }); await refreshAdmin(); }
+  if (!isAdmin) return;
+  if (!confirm((active ? "重新啟用" : "停用") + "此受試者帳號？停用後他將無法登入查看或儲存紀錄。")) return;
+  try { await db.collection("participants").doc(uid).update({ active }); await refreshAdmin(); }
+  catch (e) { alert(safeError(e)); }
+}
+async function deleteAttempt(id) {
+  if (!isAdmin || typeof id !== "string") return;
+  if (!confirm("確定永久刪除這筆紀錄？此動作無法復原。")) return;
+  try { await db.collection("attempts").doc(id).delete(); $("adminDetail").classList.add("hidden"); await refreshAdmin(); }
   catch (e) { alert(safeError(e)); }
 }
 
 /* ---------- 事件綁定（取代所有內嵌 onclick，才能啟用嚴格 CSP） ---------- */
 const ACTIONS = {
-  login: () => login(),
+  submit: () => submitAuth(),
+  mode: a => setMode(a),
+  resetPw: () => resetPassword(),
   startQuiz: () => startQuiz(),
   selectOption: a => selectOption(parseInt(a, 10)),
   nextStep: () => nextStep(),
@@ -529,8 +577,7 @@ const ACTIONS = {
   refreshHistory: () => loadMyHistory(),
   adminTab: a => showAdminTab(a === "attempts" ? "attempts" : "participants"),
   refreshAdmin: () => refreshAdmin(),
-  createParticipant: () => createParticipant(),
-  copyCode: () => copyCode(),
+  deleteAttempt: a => deleteAttempt(a),
   viewAttempt: a => viewAttempt(a),
   viewParticipant: a => viewParticipant(a),
   viewAdminAttempt: a => viewAdminAttempt(a),
@@ -543,7 +590,7 @@ document.addEventListener("click", e => {
   const fn = hasOwn(ACTIONS, t.dataset.act) ? ACTIONS[t.dataset.act] : null;
   if (fn) fn(t.dataset.arg, t);
 });
-$("accessCode").addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); login(); } });
+["email", "password", "displayName"].forEach(id => $(id).addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); submitAuth(); } }));
 ["click", "keydown", "touchstart"].forEach(ev => document.addEventListener(ev, armIdle, { passive: true }));
 
 init();
